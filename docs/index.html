@@ -44,6 +44,7 @@
         <a href="#endogamie" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Découverte</a>
         <a href="#carte" style="color:#8C4A2E;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Carte</a>
         <a href="#contribuer" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Contribuer</a>
+        <a href="#imprimer" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Imprimer</a>
         <a href="#sources" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Sources</a>
       </nav>
     </div>
@@ -91,15 +92,15 @@
           <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:#5A6771">Générations</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:0.2rem">
-          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">8</span>
+          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">{{ nChildren }}</span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:#5A6771">Enfants d'Aline &amp; Ludovic</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:0.2rem">
-          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">20</span>
+          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">{{ nGrand }}</span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:#5A6771">Petits-enfants</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:0.2rem">
-          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">19</span>
+          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">{{ nGreat }}</span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:#5A6771">Arrière-petits-enfants</span>
         </div>
       </div>
@@ -239,15 +240,29 @@
         <figcaption style="margin-top:0.9rem;font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.12em;color:#5A6771">Aline et ses huit enfants · 8 juillet 2026</figcaption>
       </figure>
       <div style="display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between;margin-bottom:1.75rem">
-        <input type="search" value="{{ q }}" onInput="{{ onSearch }}" placeholder="Chercher un prénom, un nom…" aria-label="Rechercher une personne" style="flex:0 1 340px;min-height:48px;padding:0.7rem 1.2rem;border:1px solid rgba(34,48,58,0.24);background:#FAF6EB;color:#22303A;border-radius:999px;font-family:'Crimson Pro',serif;font-size:1.05rem">
+        <input type="search" value="{{ q }}" onInput="{{ onSearch }}" placeholder="Chercher dans toute la famille…" aria-label="Rechercher une personne" style="flex:0 1 340px;min-height:48px;padding:0.7rem 1.2rem;border:1px solid rgba(34,48,58,0.24);background:#FAF6EB;color:#22303A;border-radius:999px;font-family:'Crimson Pro',serif;font-size:1.05rem">
         <div style="display:inline-flex;gap:4px;border:1px solid rgba(34,48,58,0.14);border-radius:999px;padding:4px;background:#FAF6EB;flex-wrap:wrap">
           <button onClick="{{ viewAll }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.55rem 1rem;border-radius:999px;color:#22303A;text-transform:uppercase;letter-spacing:0.08em;min-height:44px;background:{{ viewAllBg }};cursor:pointer">Toutes</button>
-          <button onClick="{{ viewGrand }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.55rem 1rem;border-radius:999px;color:#22303A;text-transform:uppercase;letter-spacing:0.08em;min-height:44px;background:{{ viewGrandBg }};cursor:pointer">Petits-enfants 20</button>
-          <button onClick="{{ viewGreat }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.55rem 1rem;border-radius:999px;color:#22303A;text-transform:uppercase;letter-spacing:0.08em;min-height:44px;background:{{ viewGreatBg }};cursor:pointer">Arrière-petits-enfants 19</button>
+          <button onClick="{{ viewGrand }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.55rem 1rem;border-radius:999px;color:#22303A;text-transform:uppercase;letter-spacing:0.08em;min-height:44px;background:{{ viewGrandBg }};cursor:pointer">Petits-enfants {{ nGrand }}</button>
+          <button onClick="{{ viewGreat }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.55rem 1rem;border-radius:999px;color:#22303A;text-transform:uppercase;letter-spacing:0.08em;min-height:44px;background:{{ viewGreatBg }};cursor:pointer">Arrière-petits-enfants {{ nGreat }}</button>
         </div>
       </div>
       <sc-if value="{{ searching }}" hint-placeholder-val="{{ false }}">
         <p style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#5A6771;margin:0 0 1rem">{{ searchLabel }}</p>
+      </sc-if>
+      <sc-if value="{{ hasOther }}" hint-placeholder-val="{{ false }}">
+        <div style="margin:0 0 1.75rem;padding:1.5rem 1.75rem;background:#F6E7DC;border:1px solid rgba(34,48,58,0.14);border-radius:8px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:#8C4A2E;margin-bottom:1rem">Ailleurs sur le site</div>
+          <div style="display:flex;flex-direction:column;gap:0.55rem">
+            <sc-for list="{{ otherResults }}" as="r" hint-placeholder-count="3">
+              <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:0.4rem 0.9rem">
+                <button onClick="{{ r.go }}" style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.2rem;color:#8C4A2E;background:none;border:0;padding:0;cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:rgba(140,74,46,0.35);text-underline-offset:3px">{{ r.name }}</button>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#5A6771">{{ r.detail }}</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:#8A929A">{{ r.where }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
       </sc-if>
       <div style="display:flex;flex-direction:column;gap:0.7rem">
         <sc-for list="{{ branches }}" as="b" hint-placeholder-count="8">
@@ -607,6 +622,17 @@
       </div>
     </section>
 
+    <section id="imprimer" style="padding:4.5rem 0 3rem">
+      <div style="display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;align-items:center;justify-content:space-between;padding:clamp(1.5rem,4vw,2.5rem);background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:10px">
+        <div style="max-width:52ch">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.16em;color:#8C4A2E;display:block;margin-bottom:0.7rem">Sur papier</span>
+          <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:1.9rem;margin:0 0 0.6rem;color:#22303A">Imprimer l'arbre de famille</h3>
+          <p style="font-size:1.05rem;color:#5A6771;margin:0;text-wrap:pretty">Les huit branches et leurs descendants, les quatre lignées et la chronologie, mis en page pour le papier. Dans la fenêtre d'impression, choisissez « Enregistrer en PDF » pour l'envoyer par courriel.</p>
+        </div>
+        <a href="imprimer.html" style="display:inline-flex;align-items:center;min-height:48px;padding:0.8rem 1.5rem;border-radius:999px;background:#22303A;color:#F4EFE4;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em">Ouvrir la version papier</a>
+      </div>
+    </section>
+
     <section id="sources" style="padding:4.5rem 0 2rem">
       <div style="max-width:60ch;margin-bottom:2.5rem">
         <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Sources et méthode</span>
@@ -649,7 +675,10 @@
       <div onClick="{{ closeModal }}" style="position:absolute;inset:0;background:rgba(34,48,58,0.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);cursor:pointer"></div>
       <div style="position:relative;background:#F4EFE4;border:1px solid #8C4A2E;border-radius:10px;padding:2.5rem;max-width:600px;width:100%;max-height:calc(100vh - 4rem);overflow-y:auto;box-shadow:0 8px 40px rgba(34,48,58,0.25)">
         <button onClick="{{ closeModal }}" aria-label="Fermer" style="position:absolute;top:0.9rem;right:1rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(34,48,58,0.2);color:#5A6771;font-size:1.5rem;cursor:pointer">×</button>
-        <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60,'SOFT' 30;font-style:italic;font-weight:500;font-size:2rem;line-height:1.1;color:#8C4A2E;margin:0 0 1.4rem;padding:0 2.5rem 1.2rem 0;border-bottom:1px solid rgba(34,48,58,0.1)">{{ modalName }}</h3>
+                <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60,'SOFT' 30;font-style:italic;font-weight:500;font-size:2rem;line-height:1.1;color:#8C4A2E;margin:0 0 1.4rem;padding:0 2.5rem 1.2rem 0;border-bottom:1px solid rgba(34,48,58,0.1)">{{ modalName }}</h3>
+<sc-if value="{{ modalHasRelation }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:#5A6771;margin:0 0 1.4rem;padding-top:1.1rem;border-top:1px dashed rgba(34,48,58,0.2)">{{ modalRelation }}</div>
+        </sc-if>
         <dl style="display:grid;grid-template-columns:140px 1fr;gap:0.6rem 1.2rem;margin:0 0 1.5rem">
           <sc-for list="{{ modalRows }}" as="r" hint-placeholder-count="4">
             <div style="display:contents">
@@ -835,6 +864,55 @@ class Component extends DCLogic {
     return N;
   }
 
+  countGreat(b) {
+    const rx = /\((\d{1,2}\s+[a-zéèûêùàâîïçöô]+\.?\s*\d{4})\)/g;
+    let n = 0;
+    for (const c of b.children) { if (!c.kids) continue; const m = String(c.kids).match(rx); if (m) n += m.length; }
+    return n;
+  }
+
+  relations() {
+    if (this._rel || !this.graph) return this._rel || null;
+    const G = this.graph, ROOTS = ["aline-jomphe", "ludovic-cormier"];
+    const walk = (start, key) => {
+      const seen = {}, q = [[start, 0]];
+      while (q.length) {
+        const [id, d] = q.shift();
+        const n = G[id];
+        if (!n) continue;
+        for (const nx of n[key]) if (!(nx in seen)) { seen[nx] = d + 1; q.push([nx, d + 1]); }
+      }
+      return seen;
+    };
+    const desc = walk("aline-jomphe", "children");
+    const ancA = walk("aline-jomphe", "parents");
+    const ancL = walk("ludovic-cormier", "parents");
+    const DESC = ["", "Enfant", "Petit-enfant", "Arrière-petit-enfant", "Arrière-arrière-petit-enfant"];
+    const ANC = ["", "Parent", "Grand-parent", "Arrière-grand-parent", "Arrière-arrière-grand-parent"];
+    const label = (id) => {
+      if (ROOTS.includes(id)) return "Le couple dont descend toute la famille";
+      if (id in desc) {
+        const d = desc[id];
+        return (DESC[d] || "Descendant à la " + d + "ᵉ génération") + " d'Aline et Ludovic";
+      }
+      const a = ancA[id], l = ancL[id];
+      if (a || l) {
+        const side = (a && l) ? "d'Aline et de Ludovic" : (a ? "d'Aline" : "de Ludovic");
+        const d = a || l;
+        const base = ANC[d] || ("Ancêtre à la " + d + "ᵉ génération");
+        return base + " " + side;
+      }
+      const n = G[id];
+      if (n && n.spouse) {
+        const sp = G[n.spouse];
+        if (sp && (sp.id in desc || sp.id in ancA || sp.id in ancL || ROOTS.includes(sp.id))) return "Conjoint(e) de " + sp.name;
+      }
+      return "";
+    };
+    this._rel = { label };
+    return this._rel;
+  }
+
   node(id) { return (this.graph && this.graph[id]) || null; }
 
   personCard(id) {
@@ -991,7 +1069,7 @@ class Component extends DCLogic {
         numLabel: "0" + b.num,
         cardLine: b.cardLine,
         cardDates: b.cardDates,
-        metaLabel: b.countK + (b.countK > 1 ? " enfants · " : " enfant · ") + b.countAK + (b.countAK > 1 ? " arrière-petits-enfants" : " arrière-petit-enfant"),
+        metaLabel: (() => { const k = b.children.length, ak = this.countGreat(b); return k + (k > 1 ? " enfants · " : " enfant · ") + ak + (ak > 1 ? " arrière-petits-enfants" : " arrière-petit-enfant"); })(),
         borderColor: open ? "#8C4A2E" : "rgba(34,48,58,0.14)",
         toggleLabel: open ? "Fermer −" : "Ouvrir +",
         open,
@@ -1000,6 +1078,22 @@ class Component extends DCLogic {
         kids,
         toggle: () => this.setState((st) => ({ open: Object.assign({}, st.open, { [b.id]: !st.open[b.id] }) })),
       });
+    }
+
+    const other = [];
+    if (q && this.graph) {
+      const seen = {};
+      for (const b of D.BRANCHES) { seen[b.name.toLowerCase()] = 1; for (const c of b.children) seen[c.name.toLowerCase()] = 1; }
+      for (const id in this.graph) {
+        const n = this.graph[id];
+        if (!n.name || n.name.toLowerCase().indexOf(q) < 0 || seen[n.name.toLowerCase()]) continue;
+        other.push({ name: n.name, detail: n.dates || "", where: "Lignées", go: () => this.setState({ modal: id }) });
+        if (other.length >= 12) break;
+      }
+      for (const p of D.PORTRAITS) {
+        if (p.name.toLowerCase().indexOf(q) < 0 || other.some((o) => o.name === p.name)) continue;
+        other.push({ name: p.name, detail: p.dates || "", where: "Portraits", go: () => this.setState({ modal: p.person }) });
+      }
     }
 
     const focus = this.node(s.focus) || this.node("aline-jomphe");
@@ -1019,11 +1113,16 @@ class Component extends DCLogic {
     const mail = (subject, body) => "mailto:" + this.MAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
 
     return Object.assign(base, {
+      nChildren: D.BRANCHES.length,
+      nGrand: D.BRANCHES.reduce((t, b) => t + b.children.length, 0),
+      nGreat: D.BRANCHES.reduce((t, b) => t + this.countGreat(b), 0),
       timeline: D.TIMELINE,
       contexts: D.CONTEXTS,
       branches,
       searching: !!q,
-      searchLabel: q ? branches.length + (branches.length === 1 ? " branche correspond" : " branches correspondent") : "",
+      hasOther: other.length > 0,
+      otherResults: other,
+      searchLabel: q ? branches.length + (branches.length === 1 ? " branche correspond" : " branches correspondent") + (other.length ? " · " + other.length + (other.length === 1 ? " autre personne" : " autres personnes") : "") : "",
       portraits: D.PORTRAITS.map((p) => Object.assign({}, p, { open: () => this.setState({ modal: p.person }) })),
       stats: D.STATS,
       recits: D.RECITS,
@@ -1089,6 +1188,8 @@ class Component extends DCLogic {
       modalHasNote: !!(modalCard && modalCard.note),
       modalNote: modalCard ? modalCard.note : "",
       modalFocus: () => { if (modalCard) this.setState({ focus: modalCard.id, modal: null }); },
+      modalRelation: modalCard && this.relations() ? this.relations().label(modalCard.id) : "",
+      modalHasRelation: !!(modalCard && this.relations() && this.relations().label(modalCard.id)),
       modalMailto: modalCard ? mail("Correction · " + modalCard.name, "Bonjour,\n\nAu sujet de " + modalCard.name + " :\n\nCe qu'il faut corriger ou ajouter :\n\n") : "",
     });
   }

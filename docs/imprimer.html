@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Arbre de famille Cormier–Jomphe — version papier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Crimson+Pro:ital,wght@0,400..600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  body{margin:0;font-family:'Crimson Pro',Georgia,serif;color:#22303A}
+  h1,h2,h3{font-family:Fraunces,serif;font-weight:500;letter-spacing:-0.015em;color:#22303A}
+  h1{font-variation-settings:'opsz' 100;font-size:34pt;line-height:1.05;margin:0 0 6pt}
+  h2{font-variation-settings:'opsz' 60;font-size:19pt;margin:26pt 0 10pt;padding-bottom:5pt;border-bottom:1px solid rgba(34,48,58,0.25);break-after:avoid}
+  h3{font-variation-settings:'opsz' 30;font-size:13pt;margin:14pt 0 4pt;break-after:avoid}
+  p{font-size:11pt;line-height:1.45;margin:0 0 8pt}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:7.5pt;text-transform:uppercase;letter-spacing:0.16em;color:#8C4A2E}
+  .meta{font-family:'JetBrains Mono',monospace;font-size:8pt;color:#5A6771}
+  .note{font-size:10pt;line-height:1.4;color:#5A6771;font-style:italic}
+  .branch{break-inside:avoid;margin:0 0 14pt;padding:0 0 10pt;border-bottom:1px dotted rgba(34,48,58,0.25)}
+  .kid{margin:5pt 0 0;padding-left:14pt;border-left:2px solid rgba(140,74,46,0.3);font-size:10.5pt;line-height:1.4}
+  .gen{break-inside:avoid;display:grid;grid-template-columns:34pt 1fr;gap:8pt;margin:0 0 5pt;font-size:10pt;line-height:1.35}
+  .gen .lbl{font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#8C4A2E;padding-top:2pt}
+  .tl{break-inside:avoid;display:grid;grid-template-columns:52pt 1fr;gap:10pt;margin:0 0 7pt;font-size:10pt;line-height:1.4}
+  .tl .yr{font-family:'JetBrains Mono',monospace;font-size:8pt;color:#8C4A2E;padding-top:1pt}
+  .two{column-count:2;column-gap:22pt}
+</style>
+</head>
+<body>
+<doc-page margin="0.7in">
+  <div slot="footer" class="meta" style="display:flex;justify-content:space-between;padding-top:6pt;border-top:1px solid rgba(34,48,58,0.2)">
+    <span>Arbre de famille Cormier–Jomphe</span>
+    <span>melco007.github.io/Site_Cormier_Jomphe</span>
+  </div>
+
+  <div class="kicker">Version papier</div>
+  <h1>Aline Jomphe<br>&amp; Ludovic Cormier</h1>
+  <p class="meta" style="margin-bottom:18pt">Cinq siècles, d'Enkirch à Havre-Saint-Pierre · <span id="stamp"></span></p>
+
+  <div id="doc"></div>
+</doc-page>
+
+<script src="./doc-page.js"></script>
+<script type="module">
+import { BRANCHES, LINEAGES, TIMELINE, FRATRIES } from './family-data.js';
+
+const esc = (s) => String(s == null ? '' : s);
+const out = [];
+
+out.push('<h2>Les huit branches</h2>');
+for (const b of BRANCHES) {
+  out.push('<div class="branch">');
+  out.push(`<div class="kicker">Branche n° ${b.num}</div>`);
+  out.push(`<h3 style="margin-top:2pt">${esc(b.cardLine)}</h3>`);
+  out.push(`<div class="meta">${esc(b.cardDates)}</div>`);
+  if (b.familyNote) out.push(`<p class="note" style="margin:6pt 0 0">${esc(b.familyNote)}</p>`);
+  for (const c of b.children) {
+    const line = [esc(c.name) + (c.partner ? ' et ' + esc(c.partner) : ''), c.dates ? '<span class="meta">' + esc(c.dates) + '</span>' : ''].filter(Boolean).join(' · ');
+    out.push(`<div class="kid">${line}`);
+    if (c.kids) out.push(`<div class="meta" style="margin-top:2pt">${esc(c.kids)}</div>`);
+    if (c.note) out.push(`<div class="note" style="font-size:9.5pt;margin-top:2pt">${esc(c.note)}</div>`);
+    out.push('</div>');
+  }
+  out.push('</div>');
+}
+
+out.push('<h2 style="break-before:page">Les quatre lignées</h2>');
+for (const L of LINEAGES) {
+  out.push('<div style="break-inside:avoid-page;margin:0 0 18pt">');
+  out.push(`<h3>${esc(L.name)}</h3>`);
+  out.push(`<div class="meta" style="margin-bottom:8pt">${L.path.map(esc).join('  →  ')}</div>`);
+  for (const g of L.generations) {
+    const name = esc(g.name) + (g.coupleSuffix ? ' × ' + esc(g.coupleSuffix) : '');
+    out.push(`<div class="gen"><div class="lbl">${esc(g.label)}</div><div><strong style="font-weight:600">${name}</strong>`);
+    if (g.dates) out.push(`<span class="meta"> — ${esc(g.dates)}</span>`);
+    if (g.note) out.push(`<div class="note" style="font-size:9.5pt">${esc(g.note)}</div>`);
+    out.push('</div></div>');
+  }
+  out.push('</div>');
+}
+
+out.push('<h2 style="break-before:page">Chronologie</h2>');
+for (const t of TIMELINE) {
+  out.push(`<div class="tl"><div class="yr">${esc(t.year)}</div><div><strong style="font-weight:600">${esc(t.label)}</strong><div>${esc(t.body)}</div></div></div>`);
+}
+
+out.push('<h2>Fratries</h2><div class="two">');
+for (const f of FRATRIES) {
+  out.push(`<div style="break-inside:avoid;margin:0 0 12pt"><h3 style="margin-top:0">${esc(f.title)}</h3>`);
+  out.push(`<div class="meta" style="margin-bottom:5pt">${esc(f.parents)} · ${esc(f.count)}</div>`);
+  for (const i of f.items) out.push(`<div style="font-size:10pt;line-height:1.35">${esc(i.name)} <span class="meta">${esc(i.detail)}</span></div>`);
+  if (f.todo) out.push(`<div class="note" style="font-size:9.5pt;margin-top:4pt">${esc(f.todo)}</div>`);
+  out.push('</div>');
+}
+out.push('</div>');
+
+document.getElementById('doc').innerHTML = out.join('');
+document.getElementById('stamp').textContent = 'imprimé le ' + new Date().toLocaleDateString('fr-CA', { day: 'numeric', month: 'long', year: 'numeric' });
+</script>
+</body>
+</html>
