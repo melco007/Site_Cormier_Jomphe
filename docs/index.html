@@ -27,22 +27,24 @@
 <div style="background:#F4EFE4;color:#22303A;font-family:'Crimson Pro','Iowan Old Style',Georgia,serif;font-size:20px;line-height:1.6;font-feature-settings:'onum' 1,'kern' 1,'liga' 1;min-height:100vh">
 
   <header style="position:sticky;top:0;z-index:100;background:rgba(244,239,228,0.93);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(34,48,58,0.1)">
-    <div style="max-width:1240px;margin:0 auto;padding:0.9rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem">
+    <div style="max-width:1240px;margin:0 auto;padding:0.9rem 2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0.75rem 2rem">
       <a href="#top" style="font-family:Fraunces,Georgia,serif;font-variation-settings:'opsz' 30,'SOFT' 50;font-size:1.2rem;font-weight:500;color:#22303A;text-decoration:none;display:inline-flex;align-items:center;gap:0.5em;white-space:nowrap">
         <span style="width:9px;height:9px;border-radius:50%;background:#8C4A2E;display:inline-block"></span>
         Cormier · Jomphe
       </a>
-      <nav aria-label="Navigation principale" style="display:flex;flex-wrap:wrap;gap:0.35rem 1.1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;justify-content:flex-end">
-        <a href="#intro" style="color:#8C4A2E;text-decoration:none;padding:0.2rem 0">Introduction</a>
-        <a href="#chronologie" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Chronologie</a>
-        <a href="#branches" style="color:#8C4A2E;text-decoration:none;padding:0.2rem 0">Branches</a>
-        <a href="#arbre" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Arbre</a>
-        <a href="#chiffres" style="color:#8C4A2E;text-decoration:none;padding:0.2rem 0">Curiosités</a>
-        <a href="#fratries" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Fratries</a>
-        <a href="#ancetres" style="color:#8C4A2E;text-decoration:none;padding:0.2rem 0">Lignées</a>
-        <a href="#endogamie" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Découverte</a>
-        <a href="#carte" style="color:#8C4A2E;text-decoration:none;padding:0.2rem 0">Carte</a>
-        <a href="#sources" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Sources</a>
+      <button onClick="{{ toggleNav }}" aria-label="Menu" style="display:{{ menuBtnDisplay }};align-items:center;gap:0.55rem;min-height:44px;padding:0.5rem 1rem;border:1px solid rgba(34,48,58,0.2);border-radius:999px;background:#FAF6EB;color:#22303A;font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer">{{ menuLabel }}</button>
+      <nav aria-label="Navigation principale" style="display:{{ navDisplay }};flex-direction:{{ navDir }};flex-basis:{{ navBasis }};flex-wrap:wrap;gap:0.35rem 1.1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;justify-content:{{ navJustify }}">
+        <a href="#intro" style="color:#8C4A2E;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Introduction</a>
+        <a href="#chronologie" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Chronologie</a>
+        <a href="#branches" style="color:#8C4A2E;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Branches</a>
+        <a href="#arbre" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Arbre</a>
+        <a href="#chiffres" style="color:#8C4A2E;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Curiosités</a>
+        <a href="#fratries" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Fratries</a>
+        <a href="#ancetres" style="color:#8C4A2E;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Lignées</a>
+        <a href="#endogamie" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Découverte</a>
+        <a href="#carte" style="color:#8C4A2E;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Carte</a>
+        <a href="#contribuer" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Contribuer</a>
+        <a href="#sources" style="color:#5A6771;text-decoration:none;padding:{{ navLinkPad }}" onClick="{{ closeNav }}">Sources</a>
       </nav>
     </div>
   </header>
@@ -52,6 +54,21 @@
     <sc-if value="{{ hasBirthday }}" hint-placeholder-val="{{ false }}">
       <div style="margin:1.5rem 0 -1rem;padding:1rem 1.75rem;background:#F6E7DC;border:1px solid rgba(140,74,46,0.4);border-radius:999px;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;font-size:1.1rem;text-align:center;color:#22303A">
         <span style="color:#8C4A2E;font-style:normal;margin-right:0.5rem">✦</span>{{ birthdayText }}
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasMonth }}" hint-placeholder-val="{{ false }}">
+      <div style="margin:1.75rem 0 -1.5rem;padding:1.5rem 1.75rem;background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:10px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.16em;color:#8C4A2E;margin-bottom:1rem">Ce mois-ci · {{ monthName }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.6rem 2rem">
+          <sc-for list="{{ monthItems }}" as="m" hint-placeholder-count="3">
+            <div style="display:flex;align-items:baseline;gap:0.6rem">
+              <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:1.5rem;color:#8C4A2E;font-feature-settings:'onum' 1,'tnum' 1">{{ m.day }}</span>
+              <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.1rem;color:#22303A">{{ m.name }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#5A6771">{{ m.age }}</span>
+            </div>
+          </sc-for>
+        </div>
       </div>
     </sc-if>
 
@@ -566,6 +583,30 @@
 
 
 
+    <section id="contribuer" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Contribuer</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Ce site n'est pas fini</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0;text-wrap:pretty">Il manque des photos, des dates, des prénoms. Chaque foyer de la famille détient une partie de ce qui manque ici.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;align-items:start;padding:clamp(1.5rem,4vw,3rem);background:linear-gradient(180deg,#FAF6EB 0%,#EAE3D3 100%);border:1px solid rgba(34,48,58,0.14);border-radius:10px">
+        <div style="max-width:52ch">
+          <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60,'SOFT' 30;font-style:italic;font-weight:500;font-size:1.8rem;margin:0 0 1rem;color:#8C4A2E">Ce que nous cherchons</h3>
+          <div style="display:flex;flex-direction:column;gap:0.7rem;font-size:1.05rem;color:#22303A">
+            <div>Une photo de votre couple, et de vos enfants.</div>
+            <div>Les dates de naissance et de mariage qui manquent.</div>
+            <div>Les photos anciennes qui dorment dans une boîte : maisons, bateaux, noces, fêtes de famille.</div>
+            <div>Ce qui se racontait chez vous et qui n'est pas écrit ici.</div>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:1.05rem;color:#5A6771;margin:0 0 1.25rem;text-wrap:pretty">Envoyez-les par courriel, en indiquant qui figure sur la photo et l'année si vous la connaissez. Même approximative, une année vaut mieux que rien.</p>
+          <a href="{{ mailtoPhotos }}" style="display:inline-flex;align-items:center;min-height:48px;padding:0.8rem 1.5rem;border-radius:999px;background:#8C4A2E;color:#F4EFE4;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em">Envoyer des photos</a>
+          <div style="margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.76rem;color:#5A6771">melco.007@gmail.com</div>
+        </div>
+      </div>
+    </section>
+
     <section id="sources" style="padding:4.5rem 0 2rem">
       <div style="max-width:60ch;margin-bottom:2.5rem">
         <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Sources et méthode</span>
@@ -620,6 +661,7 @@
         <sc-if value="{{ modalHasNote }}" hint-placeholder-val="{{ false }}">
           <p style="color:#5A6771;font-size:1.02rem;line-height:1.6;padding-top:1.1rem;border-top:1px dashed rgba(34,48,58,0.2);margin:0 0 1.25rem;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic">{{ modalNote }}</p>
         </sc-if>
+        <a href="{{ modalMailto }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0.7rem 1.2rem;margin-right:0.6rem;border:1px solid rgba(34,48,58,0.24);border-radius:999px;color:#5A6771;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.1em">Corriger ou compléter</a>
         <button onClick="{{ modalFocus }}" style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.7rem 1.2rem;min-height:44px;border:1px solid #8C4A2E;border-radius:999px;color:#8C4A2E;cursor:pointer">Voir dans l'arbre</button>
       </div>
     </div>
@@ -629,10 +671,18 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
 class Component extends DCLogic {
-  state = { ready: false, q: "", view: "all", open: {}, focus: "aline-jomphe", scale: 1, modal: null, mapHeight: 1100 };
+  state = { ready: false, q: "", view: "all", open: {}, focus: "aline-jomphe", scale: 1, modal: null, mapHeight: 1100, narrow: false, navOpen: false };
+
+  MAIL = "melco.007@gmail.com";
 
   componentDidMount() {
     this.shown = new Set();
+    this.onResize = () => {
+      const n = window.innerWidth < 1060;
+      if (n !== this.state.narrow) this.setState({ narrow: n, navOpen: false });
+    };
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
     this.onMsg = (e) => {
       if (e.data && e.data.type === "carte-height" && e.data.height > 200) {
         this.setState({ mapHeight: e.data.height });
@@ -821,8 +871,8 @@ class Component extends DCLogic {
 
   today() { return new Date(); }
 
-  birthdays() {
-    if (!this.D) return null;
+  livingDates() {
+    if (!this.D || !this.graph) return null;
     const MK = { janv: 1, janvier: 1, jan: 1, "fév": 2, "févr": 2, "février": 2, fev: 2, fevrier: 2, mars: 3, avr: 4, avril: 4, mai: 5, juin: 6, juil: 7, juillet: 7, "août": 8, aout: 8, sept: 9, septembre: 9, oct: 10, octobre: 10, nov: 11, novembre: 11, "déc": 12, "décembre": 12, dec: 12 };
     const parse = (s) => {
       const m = String(s || "").match(/(\d{1,2})\s+([a-zéèûêùàâîïçöô]+)\.?\s*(\d{4})/i);
@@ -838,6 +888,12 @@ class Component extends DCLogic {
       const gone = n.deceased || /–|†|mort/i.test(n.dates.replace(/^n\.\s*/, ""));
       if (d && d.year > 1900 && !gone) list.push({ name: n.name, ...d });
     }
+    return list;
+  }
+
+  birthdays() {
+    const list = this.livingDates();
+    if (!list) return null;
     const t = this.today();
     const day = t.getDate(), month = t.getMonth() + 1, yr = t.getFullYear();
     const MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
@@ -857,6 +913,16 @@ class Component extends DCLogic {
     const nextYear = (new Date(yr, best.month - 1, best.day) < t) ? yr + 1 : yr;
     const when = bestD === 1 ? "demain" : "dans " + bestD + " jours";
     return "Prochain anniversaire " + when + " : " + best.name + ", " + (nextYear - best.year) + " ans, le " + best.day + " " + MONTHS[best.month - 1] + ".";
+  }
+
+  monthList() {
+    const list = this.livingDates();
+    if (!list) return null;
+    const t = this.today();
+    const month = t.getMonth() + 1, yr = t.getFullYear();
+    const items = list.filter((p) => p.month === month).sort((a, b) => a.day - b.day);
+    if (!items.length) return null;
+    return items.map((p) => ({ day: p.day, name: p.name, age: (yr - p.year) + " ans" }));
   }
 
   arcPath(a) {
@@ -948,6 +1014,9 @@ class Component extends DCLogic {
     const spouse = focus && focus.spouse ? this.node(focus.spouse) : null;
     const modalCard = s.modal ? this.personCard(s.modal) : null;
     const bd = this.birthdays();
+    const month = this.monthList();
+    const MONTHNAMES = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+    const mail = (subject, body) => "mailto:" + this.MAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
 
     return Object.assign(base, {
       timeline: D.TIMELINE,
@@ -990,6 +1059,18 @@ class Component extends DCLogic {
       })),
       sources: D.SOURCES.map((g) => ({ cat: g.cat, items: g.items.map((i) => ({ parts: this.splitEm(i) })) })),
       hasBirthday: !!bd, birthdayText: bd || "",
+      hasMonth: !!month, monthItems: month || [], monthName: MONTHNAMES[this.today().getMonth()],
+      narrow: s.narrow,
+      menuBtnDisplay: s.narrow ? "inline-flex" : "none",
+      menuLabel: s.navOpen ? "Fermer" : "Menu",
+      navDisplay: s.narrow ? (s.navOpen ? "flex" : "none") : "flex",
+      navDir: s.narrow ? "column" : "row",
+      navBasis: s.narrow ? "100%" : "auto",
+      navJustify: s.narrow ? "flex-start" : "flex-end",
+      navLinkPad: s.narrow ? "0.7rem 0" : "0.2rem 0",
+      toggleNav: () => this.setState({ navOpen: !s.navOpen }),
+      closeNav: () => { if (s.navOpen) this.setState({ navOpen: false }); },
+      mailtoPhotos: mail("Photos et dates pour le site familial Cormier-Jomphe", "Bonjour,\n\nVoici des photos et des renseignements pour le site.\n\nQui figure sur la photo :\nAnnée (même approximative) :\nLieu :\nCe que vous savez :\n\n"),
       focusName: focus ? focus.name : "",
       focusDates: focus ? focus.dates : "",
       openFocus: () => this.setState({ modal: s.focus }),
@@ -1008,6 +1089,7 @@ class Component extends DCLogic {
       modalHasNote: !!(modalCard && modalCard.note),
       modalNote: modalCard ? modalCard.note : "",
       modalFocus: () => { if (modalCard) this.setState({ focus: modalCard.id, modal: null }); },
+      modalMailto: modalCard ? mail("Correction · " + modalCard.name, "Bonjour,\n\nAu sujet de " + modalCard.name + " :\n\nCe qu'il faut corriger ou ajouter :\n\n") : "",
     });
   }
 }
