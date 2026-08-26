@@ -112,7 +112,7 @@ export const BRANCHES = [
     children: [
       { name: "Mélodie Cormier", dates: "14 avril 1998", kids: "Naomie (14 fév 2025)" },
       { name: "Laurie Cormier", dates: "22 déc 2000" },
-      { name: "Élie-David Cormier", dates: "13 déc 2002" },
+      { name: "Éli-David Cormier", partner: "Kasandra Verville", dates: "13 déc 2002", note: "Mariés le 26 juillet 2026." },
     ] },
 ];
 
