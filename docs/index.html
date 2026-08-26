@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Cinq siècles de la famille d'Aline Jomphe et Ludovic Cormier, d'Enkirch à Havre-Saint-Pierre.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Crimson+Pro:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body { margin: 0; background: #F4EFE4; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  * { box-sizing: border-box; }
+  a { color: #275462; text-underline-offset: 3px; text-decoration-color: rgba(34,48,58,0.25); }
+  a:hover { color: #8C4A2E; text-decoration-color: #8C4A2E; }
+  ::selection { background: #8C4A2E; color: #F4EFE4; }
+  :focus-visible { outline: 2px solid #8C4A2E; outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</helmet>
+
+<div style="background:#F4EFE4;color:#22303A;font-family:'Crimson Pro','Iowan Old Style',Georgia,serif;font-size:20px;line-height:1.6;font-feature-settings:'onum' 1,'kern' 1,'liga' 1;min-height:100vh">
+
+  <header style="position:sticky;top:0;z-index:100;background:rgba(244,239,228,0.93);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(34,48,58,0.1)">
+    <div style="max-width:1240px;margin:0 auto;padding:0.9rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem">
+      <a href="#top" style="font-family:Fraunces,Georgia,serif;font-variation-settings:'opsz' 30,'SOFT' 50;font-size:1.2rem;font-weight:500;color:#22303A;text-decoration:none;display:inline-flex;align-items:center;gap:0.5em;white-space:nowrap">
+        <span style="width:9px;height:9px;border-radius:50%;background:#8C4A2E;display:inline-block"></span>
+        Cormier · Jomphe
+      </a>
+      <nav aria-label="Navigation principale" style="display:flex;flex-wrap:wrap;gap:0.35rem 1.1rem;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;justify-content:flex-end">
+        <a href="#chronologie" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Chronologie</a>
+        <a href="#branches" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Branches</a>
+        <a href="#arbre" style="color:#8C4A2E;text-decoration:none;padding:0.2rem 0">Arbre</a>
+        <a href="#portraits" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Portraits</a>
+        <a href="#ancetres" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Ancêtres</a>
+        <a href="#carte" style="color:#8C4A2E;text-decoration:none;padding:0.2rem 0">Carte</a>
+        <a href="#recits" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Récits</a>
+        <a href="#sources" style="color:#5A6771;text-decoration:none;padding:0.2rem 0">Sources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" style="max-width:1240px;margin:0 auto;padding:0 2rem 7rem">
+
+    <sc-if value="{{ hasBirthday }}" hint-placeholder-val="{{ false }}">
+      <div style="margin:1.5rem 0 -1rem;padding:1rem 1.75rem;background:#F6E7DC;border:1px solid rgba(140,74,46,0.4);border-radius:999px;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;font-size:1.1rem;text-align:center;color:#22303A">
+        <span style="color:#8C4A2E;font-style:normal;margin-right:0.5rem">✦</span>{{ birthdayText }}
+      </div>
+    </sc-if>
+
+    <section style="padding:5.5rem 0 4rem;border-bottom:1px solid rgba(34,48,58,0.1)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.2em;color:#8C4A2E;margin-bottom:2rem;display:flex;align-items:center;gap:1rem">
+        <span style="width:24px;height:1px;background:rgba(34,48,58,0.25);display:inline-block"></span>
+        Une histoire de famille · 1474 – 2026
+      </div>
+      <div style="display:flex;flex-direction:column;margin-bottom:2rem">
+        <span style="font-family:Fraunces,Georgia,serif;font-variation-settings:'opsz' 144,'SOFT' 100,'WONK' 1;font-weight:400;font-style:italic;font-size:clamp(3rem,9vw,6.5rem);line-height:0.95;letter-spacing:-0.04em;color:#22303A">Cormier</span>
+        <span style="font-family:Fraunces,Georgia,serif;font-variation-settings:'opsz' 144,'SOFT' 100;font-style:italic;color:#8A929A;font-size:clamp(1.5rem,4.5vw,3.25rem);line-height:1.1">&amp;</span>
+        <span style="font-family:Fraunces,Georgia,serif;font-variation-settings:'opsz' 144,'SOFT' 100,'WONK' 1;font-weight:400;font-style:italic;font-size:clamp(3rem,9vw,6.5rem);line-height:0.95;letter-spacing:-0.04em;color:#8C4A2E">Jomphe</span>
+      </div>
+      <p style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-style:italic;font-size:clamp(1.3rem,2vw,1.6rem);color:#5A6771;max-width:46ch;line-height:1.4;margin:0 0 2.5rem">
+        Cinq siècles, quinze générations documentées, plus de cent noms — d'Enkirch en Rhénanie et de La Rochelle en France jusqu'à Havre-Saint-Pierre sur la Côte-Nord du Saint-Laurent.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:2.5rem 3.5rem;padding-top:2rem;border-top:1px solid rgba(34,48,58,0.14)">
+        <div style="display:flex;flex-direction:column;gap:0.2rem">
+          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">15</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:#5A6771">Générations</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.2rem">
+          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">8</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:#5A6771">Enfants d'Aline &amp; Ludovic</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.2rem">
+          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">20</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:#5A6771">Petits-enfants</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.2rem">
+          <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:2.6rem;line-height:1;color:#275462">19</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.14em;color:#5A6771">Arrière-petits-enfants</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="intro" style="padding:4.5rem 0 2rem">
+      <div style="max-width:60ch">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">L'histoire en un coup d'œil</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 1.75rem;color:#22303A">Ce que ce site rassemble</h2>
+        <p style="font-size:1.2rem;margin:0 0 1.1em;text-wrap:pretty">Ce site est un cadeau à la famille d'<strong>Aline Jomphe et Ludovic Cormier</strong>. Il regroupe ce que nous savons, en août 2026, de nos deux grandes lignées — la paternelle acadienne qui traverse le Golfe et s'ancre à Havre-Saint-Pierre, et la maternelle qui remonte jusqu'à un tailleur de Rhénanie devenu Québécois puis Madelinot.</p>
+        <p style="font-size:1.2rem;margin:0 0 1.1em;text-wrap:pretty">La lignée <em style="color:#6E3720;font-family:Fraunces,serif">Schump-Jomphe</em> est celle qui remonte le plus loin, jusqu'au village d'Enkirch dans la vallée de la Moselle où le nom Schomp apparaît après 1474. La lignée <em style="color:#6E3720;font-family:Fraunces,serif">Cormier</em>, au contraire, s'arrête net à Robert Cormier, maître charpentier de navire à La Rochelle qui s'embarque pour l'Acadie le 8 janvier 1644 — au-delà, c'est le silence des archives.</p>
+        <div style="border-left:3px solid #8C4A2E;padding:0.4rem 0 0.4rem 1.6rem;margin:2rem 0;color:#5A6771;font-style:italic;font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.2rem;line-height:1.45">« La famille Cormier est l'une de ces rares familles dont on connaît les circonstances et les conditions de leur arrivée en Acadie. »</div>
+        <p style="font-size:1.2rem;margin:0;text-wrap:pretty">Vous trouverez ici la chronologie des grandes dates, les huit branches issues d'Aline et Ludovic (avec tous leurs enfants et petits-enfants), l'arbre navigable où l'on passe d'une personne à l'autre, les quatre lignées ancestrales, l'histoire de la goélette Mariner qui fonde Havre-Saint-Pierre en 1857, la carte des migrations, et les sources sur lesquelles tout ceci repose.</p>
+      </div>
+    </section>
+
+    <section id="chronologie" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Chronologie</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Cinq siècles en dix-huit dates</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Les moments qui structurent notre histoire — apparition d'un nom dans un village, traversée d'un océan, naissance d'un enfant qui portera la lignée.</p>
+      </div>
+      <div style="position:relative;padding-left:2px">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(34,48,58,0.12)"></div>
+        <div data-timeline-progress style="position:absolute;left:0;top:0;width:2px;height:0;background:#8C4A2E"></div>
+        <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="5">
+          <div data-reveal="1" style="display:grid;grid-template-columns:170px 1fr;gap:2rem;padding:1.5rem 0 1.5rem 2rem;border-bottom:1px solid rgba(34,48,58,0.07);position:relative">
+            <div style="position:absolute;left:-6px;top:2rem;width:13px;height:13px;border-radius:50%;background:#F4EFE4;border:2px solid #8C4A2E"></div>
+            <div>
+              <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:1.75rem;line-height:1.1;color:#8C4A2E;font-feature-settings:'onum' 1,'tnum' 1">{{ t.year }}</div>
+            </div>
+            <div>
+              <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-weight:500;font-size:1.3rem;margin:0 0 0.4rem;color:#22303A">{{ t.label }}</h3>
+              <p style="color:#5A6771;font-size:1.05rem;margin:0;max-width:62ch;text-wrap:pretty">{{ t.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="contexte" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Contexte historique</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Quatre moments qui nous traversent</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Notre famille a été portée par les grands courants de l'histoire du monde atlantique. Voici les quatre qui l'ont le plus marquée.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem">
+        <sc-for list="{{ contexts }}" as="c" hint-placeholder-count="4">
+          <div data-reveal="1" style="background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:8px;padding:1.9rem 1.6rem;position:relative">
+            <div style="position:absolute;top:1.1rem;right:1.1rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;padding:0.2rem 0.6rem;border:1px solid rgba(34,48,58,0.14);border-radius:999px;text-transform:uppercase;letter-spacing:0.12em;color:#275462">{{ c.tag }}</div>
+            <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-style:italic;font-size:1.45rem;color:#8C4A2E;margin-bottom:0.4rem">{{ c.era }}</div>
+            <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-weight:500;font-size:1.2rem;line-height:1.25;margin:0 0 0.9rem;color:#22303A">{{ c.title }}</h3>
+            <p style="color:#5A6771;font-size:1rem;line-height:1.55;margin:0;text-wrap:pretty">{{ c.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="branches" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">La descendance</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Les huit branches</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Chaque enfant d'Aline et Ludovic a fondé une branche. Touchez une branche pour voir les petits-enfants et arrière-petits-enfants.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between;margin-bottom:1.75rem">
+        <input type="search" value="{{ q }}" onInput="{{ onSearch }}" placeholder="Chercher un prénom, un nom…" aria-label="Rechercher une personne" style="flex:0 1 340px;min-height:48px;padding:0.7rem 1.2rem;border:1px solid rgba(34,48,58,0.24);background:#FAF6EB;color:#22303A;border-radius:999px;font-family:'Crimson Pro',serif;font-size:1.05rem">
+        <div style="display:inline-flex;gap:4px;border:1px solid rgba(34,48,58,0.14);border-radius:999px;padding:4px;background:#FAF6EB;flex-wrap:wrap">
+          <button onClick="{{ viewAll }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.55rem 1rem;border-radius:999px;color:#22303A;text-transform:uppercase;letter-spacing:0.08em;min-height:44px;background:{{ viewAllBg }};cursor:pointer">Toutes</button>
+          <button onClick="{{ viewGrand }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.55rem 1rem;border-radius:999px;color:#22303A;text-transform:uppercase;letter-spacing:0.08em;min-height:44px;background:{{ viewGrandBg }};cursor:pointer">Petits-enfants 20</button>
+          <button onClick="{{ viewGreat }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:0.55rem 1rem;border-radius:999px;color:#22303A;text-transform:uppercase;letter-spacing:0.08em;min-height:44px;background:{{ viewGreatBg }};cursor:pointer">Arrière-petits-enfants 19</button>
+        </div>
+      </div>
+      <sc-if value="{{ searching }}" hint-placeholder-val="{{ false }}">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#5A6771;margin:0 0 1rem">{{ searchLabel }}</p>
+      </sc-if>
+      <div style="display:flex;flex-direction:column;gap:0.7rem">
+        <sc-for list="{{ branches }}" as="b" hint-placeholder-count="8">
+          <div style="background:#FAF6EB;border:1px solid {{ b.borderColor }};border-radius:8px;overflow:hidden">
+            <button onClick="{{ b.toggle }}" style="width:100%;text-align:left;padding:1.5rem 1.75rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;cursor:pointer">
+              <span style="display:flex;flex-direction:column;gap:0.3rem">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#8A929A;text-transform:uppercase;letter-spacing:0.16em">Branche N° {{ b.numLabel }}</span>
+                <span style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-size:1.6rem;line-height:1.15;font-weight:500;color:#22303A">{{ b.cardLine }}</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#5A6771">{{ b.cardDates }}</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#8A929A">{{ b.metaLabel }}</span>
+              </span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#8C4A2E;text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap">{{ b.toggleLabel }}</span>
+            </button>
+            <sc-if value="{{ b.open }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:0 1.75rem 1.75rem">
+                <div style="border-top:1px solid rgba(34,48,58,0.07);padding-top:1.5rem;display:flex;flex-direction:column;gap:0.9rem">
+                  <sc-if value="{{ b.showNote }}" hint-placeholder-val="{{ false }}">
+                    <div style="padding:1rem 1.2rem;background:#F6E7DC;border-left:3px solid #8C4A2E;border-radius:0 6px 6px 0;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;font-size:1.05rem;line-height:1.45;color:#22303A">{{ b.familyNote }}</div>
+                  </sc-if>
+                  <sc-for list="{{ b.kids }}" as="c" hint-placeholder-count="2">
+                    <div style="padding:0.9rem 1.15rem;border-left:3px solid rgba(34,48,58,0.14)">
+                      <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.2rem;font-weight:500;margin-bottom:0.3rem;color:#22303A">
+                        {{ c.name }}<em style="color:#5A6771;font-weight:400">{{ c.partnerLabel }}</em>
+                        <sc-if value="{{ c.deceased }}" hint-placeholder-val="{{ false }}">
+                          <span style="color:#A85E4A;font-family:'JetBrains Mono',monospace;font-size:0.7rem;padding:0.15rem 0.45rem;border:1px solid #A85E4A;border-radius:4px;margin-left:0.5em;background:rgba(168,94,74,0.07)">in memoriam</span>
+                        </sc-if>
+                      </div>
+                      <div style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#5A6771">{{ c.dates }}</div>
+                      <sc-if value="{{ c.showKids }}" hint-placeholder-val="{{ false }}">
+                        <div style="margin-top:0.5rem;color:#5A6771;font-size:1rem;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic"><span style="color:#275462;font-style:normal">→ </span>{{ c.kidsLabel }}</div>
+                      </sc-if>
+                      <sc-if value="{{ c.showOwnNote }}" hint-placeholder-val="{{ false }}">
+                        <div style="margin-top:0.4rem;color:#5A6771;font-size:1rem;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic">{{ c.note }}</div>
+                      </sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="arbre" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">L'arbre navigable</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Se promener de personne en personne</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Touchez un nom pour le mettre au centre : ses parents et grands-parents apparaissent au-dessus, ses enfants en dessous. Le bouton <em>Sa fiche</em> ouvre tout ce que nous savons de la personne.</p>
+      </div>
+      <div style="background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:10px;padding:1.5rem">
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;justify-content:space-between;margin-bottom:1.25rem">
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+            <button onClick="{{ focusAline }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.6rem 1rem;min-height:44px;border:1px solid rgba(34,48,58,0.2);border-radius:999px;color:#22303A;cursor:pointer">Aline</button>
+            <button onClick="{{ focusLudovic }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.6rem 1rem;min-height:44px;border:1px solid rgba(34,48,58,0.2);border-radius:999px;color:#22303A;cursor:pointer">Ludovic</button>
+            <button onClick="{{ focusRobert }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.6rem 1rem;min-height:44px;border:1px solid rgba(34,48,58,0.2);border-radius:999px;color:#22303A;cursor:pointer">Robert 1644</button>
+            <button onClick="{{ focusHans }}" style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.6rem 1rem;min-height:44px;border:1px solid rgba(34,48,58,0.2);border-radius:999px;color:#22303A;cursor:pointer">Enkirch 1499</button>
+          </div>
+          <div style="display:flex;gap:0.5rem;align-items:center">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#5A6771;text-transform:uppercase;letter-spacing:0.1em">Taille</span>
+            <button onClick="{{ zoomOut }}" aria-label="Réduire" style="width:48px;height:48px;border:1px solid rgba(34,48,58,0.2);border-radius:50%;font-size:1.4rem;color:#22303A;cursor:pointer">−</button>
+            <button onClick="{{ zoomIn }}" aria-label="Agrandir" style="width:48px;height:48px;border:1px solid rgba(34,48,58,0.2);border-radius:50%;font-size:1.4rem;color:#22303A;cursor:pointer">+</button>
+          </div>
+        </div>
+        <div style="overflow:auto">
+          <div style="transform:scale({{ scale }});transform-origin:top center;display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:0.5rem 0 1rem;min-width:min-content">
+
+            <sc-if value="{{ hasGrandparents }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.14em;color:#8A929A">Grands-parents</span>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center">
+                  <sc-for list="{{ grandparents }}" as="p" hint-placeholder-count="4">
+                    <button onClick="{{ p.focus }}" style="padding:0.65rem 0.9rem;border:1px solid rgba(34,48,58,0.16);border-radius:8px;background:#F4EFE4;text-align:center;cursor:pointer;min-height:44px">
+                      <span style="display:block;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-size:0.98rem;color:#22303A">{{ p.name }}</span>
+                      <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#8A929A">{{ p.dates }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ hasParents }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.14em;color:#8A929A">Parents</span>
+                <div style="display:flex;gap:0.9rem;flex-wrap:wrap;justify-content:center">
+                  <sc-for list="{{ parents }}" as="p" hint-placeholder-count="2">
+                    <button onClick="{{ p.focus }}" style="padding:0.8rem 1.1rem;border:1px solid rgba(34,48,58,0.22);border-radius:8px;background:#F4EFE4;text-align:center;cursor:pointer;min-height:44px">
+                      <span style="display:block;font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.1rem;color:#22303A">{{ p.name }}</span>
+                      <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#5A6771">{{ p.dates }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+                <div style="width:1px;height:22px;background:rgba(34,48,58,0.25)"></div>
+              </div>
+            </sc-if>
+
+            <div style="display:flex;gap:1rem;align-items:stretch;flex-wrap:wrap;justify-content:center">
+              <div style="padding:1.5rem 1.75rem;border:2px solid #8C4A2E;border-radius:10px;background:#F6E7DC;text-align:center;min-width:260px">
+                <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-style:italic;font-size:1.75rem;line-height:1.15;color:#6E3720">{{ focusName }}</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#5A6771;margin-top:0.35rem">{{ focusDates }}</div>
+                <button onClick="{{ openFocus }}" style="margin-top:0.9rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.6rem 1.1rem;min-height:44px;border:1px solid #8C4A2E;border-radius:999px;color:#8C4A2E;cursor:pointer">Sa fiche</button>
+              </div>
+              <sc-if value="{{ hasSpouse }}" hint-placeholder-val="{{ true }}">
+                <button onClick="{{ focusSpouse }}" style="padding:1.5rem 1.5rem;border:1px dashed rgba(140,74,46,0.5);border-radius:10px;background:#F4EFE4;text-align:center;min-width:220px;cursor:pointer">
+                  <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.14em;color:#8A929A;margin-bottom:0.4rem">Conjoint(e)</span>
+                  <span style="display:block;font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.3rem;color:#22303A">{{ spouseName }}</span>
+                  <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#5A6771;margin-top:0.25rem">{{ spouseDates }}</span>
+                </button>
+              </sc-if>
+            </div>
+
+            <sc-if value="{{ hasChildren }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem">
+                <div style="width:1px;height:22px;background:rgba(34,48,58,0.25)"></div>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.14em;color:#8A929A">{{ childrenLabel }}</span>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;max-width:960px">
+                  <sc-for list="{{ children }}" as="p" hint-placeholder-count="3">
+                    <button onClick="{{ p.focus }}" style="padding:0.8rem 1rem;border:1px solid rgba(34,48,58,0.18);border-radius:8px;background:#F4EFE4;text-align:center;cursor:pointer;min-height:44px">
+                      <span style="display:block;font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.05rem;color:#22303A">{{ p.name }}</span>
+                      <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#8A929A">{{ p.dates }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isLeaf }}" hint-placeholder-val="{{ false }}">
+              <p style="font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;color:#8A929A;margin:0">Aucun descendant documenté ici.</p>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portraits" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Portraits</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Cinq voix de notre passé</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Cinq personnes qui ont plus que d'autres façonné notre famille — chacune a laissé une trace visible dans nos vies, même si elles-mêmes n'ont jamais su que nous existions.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1.5rem">
+        <sc-for list="{{ portraits }}" as="p" hint-placeholder-count="4">
+          <article data-reveal="1" style="background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:8px;padding:2rem;display:flex;flex-direction:column;gap:1.25rem">
+            <div style="padding-bottom:1.25rem;border-bottom:1px solid rgba(34,48,58,0.07)">
+              <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60,'SOFT' 30;font-style:italic;font-weight:500;font-size:1.65rem;line-height:1.1;color:#8C4A2E;margin:0 0 0.4rem">{{ p.name }}</h3>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#5A6771;margin-bottom:0.7rem">{{ p.dates }}</div>
+              <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;font-size:1.05rem;color:#22303A">{{ p.role }}</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:#8A929A;text-transform:uppercase;letter-spacing:0.1em;margin-top:0.2rem">{{ p.place }}</div>
+            </div>
+            <p style="font-size:1.05rem;line-height:1.6;margin:0;max-width:54ch;text-wrap:pretty">{{ p.body }}</p>
+            <button onClick="{{ p.open }}" style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.6rem 1.1rem;min-height:44px;border:1px solid rgba(140,74,46,0.5);border-radius:999px;color:#8C4A2E;cursor:pointer">Sa fiche</button>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="chiffres" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Curiosités &amp; chiffres</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Le saviez-vous ?</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Quelques faits marquants qui ressortent de cinq siècles d'archives. Certains sont poignants, d'autres surprenants — tous sont vrais.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="6">
+          <div data-reveal="1" style="padding:1.9rem 1.6rem;background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:8px">
+            <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 144,'SOFT' 50;font-size:2.8rem;line-height:1;color:#8C4A2E;letter-spacing:-0.02em;margin-bottom:0.6rem;font-feature-settings:'onum' 1,'tnum' 1">{{ s.num }}</div>
+            <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.1rem;font-weight:500;color:#22303A;line-height:1.25;margin-bottom:0.3rem">{{ s.label }}</div>
+            <div style="color:#5A6771;font-size:0.98rem;line-height:1.5;text-wrap:pretty">{{ s.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="fratries" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Les fratries</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Aline et Ludovic parmi leurs frères et sœurs</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Ludovic est un des dix-sept enfants d'Adélard Cormier et Alice Cummings ; Aline, une des huit enfants de Claude Jomphe et Bernadette Lejeune. Voici leurs fratries.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:1.5rem">
+        <sc-for list="{{ fratries }}" as="f" hint-placeholder-count="2">
+          <div style="background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:8px;padding:2rem">
+            <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.4rem;font-weight:500;margin-bottom:0.4rem;color:#22303A">{{ f.title }}</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.76rem;color:#8C4A2E;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem">{{ f.parents }}</div>
+            <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;color:#5A6771;margin-bottom:1.25rem;font-size:1.05rem">{{ f.count }}</div>
+            <div style="display:flex;flex-direction:column;gap:0.6rem">
+              <sc-for list="{{ f.items }}" as="i" hint-placeholder-count="6">
+                <div style="padding:0.75rem 1rem;border-left:3px solid {{ i.border }};background:{{ i.bg }}">
+                  <span style="display:block;font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-weight:500;font-size:1.08rem;color:#22303A">{{ i.name }}</span>
+                  <span style="color:#5A6771;font-size:1rem">{{ i.detail }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <sc-if value="{{ f.hasTodo }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:1rem;padding:1rem 1.15rem;border:1px dashed rgba(34,48,58,0.2);border-radius:6px;background:#EAE3D3;color:#5A6771;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;font-size:0.98rem;line-height:1.45">{{ f.todo }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="ancetres" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Les quatre lignées</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">D'où l'on vient</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Chaque grand-parent d'Aline et Ludovic ouvre sur une lignée distincte. Nous les avons remontées aussi loin que les archives le permettent — parfois jusqu'à un mur bien net, parfois plus loin qu'on ne l'aurait cru.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:1.5rem">
+        <sc-for list="{{ lineages }}" as="L" hint-placeholder-count="4">
+          <div style="background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:8px;padding:2rem">
+            <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:1.75rem;margin-bottom:0.4rem;color:#22303A">{{ L.name }}</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.1em;color:#275462;margin-bottom:1.5rem;line-height:1.5">{{ L.pathLabel }}</div>
+            <ul style="display:flex;flex-direction:column;margin:0;padding:0;list-style:none">
+              <sc-for list="{{ L.gens }}" as="g" hint-placeholder-count="6">
+                <li style="display:grid;grid-template-columns:52px 1fr;gap:0.85rem;padding:1rem 0;border-top:1px solid rgba(34,48,58,0.07);align-items:baseline">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:{{ g.labelColor }};font-weight:600">{{ g.label }}</span>
+                  <span>
+                    <span style="display:block;font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-size:1.1rem;font-weight:500;line-height:1.25;color:{{ g.nameColor }}">{{ g.name }}<em style="color:#5A6771;font-weight:400">{{ g.coupleLabel }}</em></span>
+                    <sc-if value="{{ g.hasDates }}" hint-placeholder-val="{{ false }}">
+                      <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.76rem;color:#5A6771;line-height:1.4;margin-top:0.15rem">{{ g.dates }}</span>
+                    </sc-if>
+                    <sc-if value="{{ g.hasNote }}" hint-placeholder-val="{{ false }}">
+                      <span style="display:block;color:#5A6771;font-size:1rem;margin-top:0.4rem;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;line-height:1.45">{{ g.note }}</span>
+                    </sc-if>
+                    <sc-if value="{{ g.speculative }}" hint-placeholder-val="{{ false }}">
+                      <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.66rem;color:#8A929A;text-transform:uppercase;letter-spacing:0.15em;margin-top:0.4rem">hypothèse</span>
+                    </sc-if>
+                  </span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:2rem;padding:2rem;background:#FAF6EB;border:1px solid rgba(34,48,58,0.14);border-radius:8px">
+        <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-weight:500;font-size:1.35rem;margin:0 0 0.5rem;color:#22303A">Les familles alliées à travers les générations</h3>
+        <p style="color:#5A6771;font-size:1.05rem;margin:0 0 1.5rem;max-width:62ch;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic">Au-delà des quatre lignées principales, chaque mariage a fait entrer un nouveau nom dans l'arbre. Voici les familles qui figurent parmi nos ancêtres au fil des sept générations documentées.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.6rem">
+          <sc-for list="{{ allied }}" as="a" hint-placeholder-count="12">
+            <span title="{{ a.gen }}" style="font-family:Fraunces,serif;padding:0.4rem 0.9rem;border:1px solid {{ a.border }};border-radius:999px;color:{{ a.color }};font-size:{{ a.size }}">{{ a.name }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="endogamie" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Une découverte</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0;color:#22303A">Aline et Ludovic sont distants cousins</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:3rem;align-items:start;padding:clamp(1.5rem,4vw,3rem);background:linear-gradient(180deg,#FAF6EB 0%,#EAE3D3 100%);border:1px solid rgba(34,48,58,0.14);border-radius:10px">
+        <div style="max-width:56ch">
+          <p style="font-size:1.1rem;margin:0 0 1rem;text-wrap:pretty">En croisant les arbres généalogiques, on découvre qu'<strong>Aline Jomphe et Ludovic Cormier partagent des ancêtres communs</strong> : <em>Hyppolite-Paul Cormier</em> et <em>Anne Gaudet</em>, mariés à Havre-Aubert le 11 novembre 1794.</p>
+          <p style="font-size:1.1rem;margin:0 0 1rem;text-wrap:pretty">Le lien passe par <strong>Barbe Cormier (1806–1856)</strong>, la sœur aînée de Jean « Maît' Jean » Cormier. Barbe a épousé François Petitpas ; leur fille Luce Petitpas est devenue la grand-mère paternelle d'Aline. Ludovic descend directement de Jean « Maît' Jean », le frère cadet de Barbe.</p>
+          <p style="font-size:1.1rem;margin:0;font-style:italic;color:#5A6771;text-wrap:pretty">Rien d'étonnant à Havre-Saint-Pierre au XIX<sup>e</sup> siècle : un petit village isolé, peu de familles fondatrices, beaucoup d'alliances entre cousins. Aline et Ludovic sont ainsi cousins issus d'un ancêtre commun quatre générations en arrière — sans le savoir sans doute.</p>
+        </div>
+        <figure style="margin:0;padding:0.5rem">
+          <svg viewBox="0 0 340 250" style="width:100%;height:auto;display:block;color:#22303A" role="img" aria-label="Diagramme montrant Hyppolite-Paul Cormier et Anne Gaudet comme ancêtres communs, se ramifiant par Barbe (côté Aline) et Jean Maît' Jean (côté Ludovic)">
+            <rect x="105" y="10" width="130" height="34" rx="4" fill="none" stroke="#8C4A2E" stroke-width="1.5"></rect>
+            <text x="170" y="24" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#8C4A2E">Hyppolite-Paul Cormier</text>
+            <text x="170" y="38" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#8C4A2E">× Anne Gaudet · 1794</text>
+            <line x1="140" y1="44" x2="90" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"></line>
+            <line x1="200" y1="44" x2="250" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"></line>
+            <text x="90" y="82" text-anchor="middle" font-family="Fraunces, serif" font-size="10" fill="currentColor">Barbe Cormier</text>
+            <text x="90" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.6">1806–1856</text>
+            <text x="250" y="82" text-anchor="middle" font-family="Fraunces, serif" font-size="10" fill="currentColor">Jean « Maît' Jean »</text>
+            <text x="250" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.6">1808–1894</text>
+            <line x1="90" y1="100" x2="90" y2="115" stroke="currentColor" stroke-width="0.8" opacity="0.4"></line>
+            <text x="90" y="126" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="currentColor" opacity="0.75">Luce Petitpas</text>
+            <line x1="90" y1="132" x2="90" y2="147" stroke="currentColor" stroke-width="0.8" opacity="0.4"></line>
+            <text x="90" y="158" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="currentColor" opacity="0.75">Frédéric Jomphe</text>
+            <line x1="90" y1="164" x2="90" y2="179" stroke="currentColor" stroke-width="0.8" opacity="0.4"></line>
+            <text x="90" y="190" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="currentColor" opacity="0.75">Claude Jomphe</text>
+            <line x1="250" y1="100" x2="250" y2="115" stroke="currentColor" stroke-width="0.8" opacity="0.4"></line>
+            <text x="250" y="126" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="currentColor" opacity="0.75">Firmin Cormier</text>
+            <line x1="250" y1="132" x2="250" y2="147" stroke="currentColor" stroke-width="0.8" opacity="0.4"></line>
+            <text x="250" y="158" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="currentColor" opacity="0.75">Adélard Cormier</text>
+            <line x1="90" y1="196" x2="130" y2="220" stroke="#8C4A2E" stroke-width="1.2"></line>
+            <line x1="250" y1="196" x2="210" y2="220" stroke="#8C4A2E" stroke-width="1.2"></line>
+            <rect x="88" y="222" width="84" height="20" rx="3" fill="none" stroke="#8C4A2E" stroke-width="1.2"></rect>
+            <text x="130" y="236" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#8C4A2E">Aline · 1934</text>
+            <rect x="172" y="222" width="90" height="20" rx="3" fill="none" stroke="#8C4A2E" stroke-width="1.2"></rect>
+            <text x="217" y="236" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="10" fill="#8C4A2E">Ludovic · 1932</text>
+          </svg>
+          <figcaption style="margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:#5A6771;text-transform:uppercase;letter-spacing:0.12em;text-align:center">Ancêtres communs · 4 générations en arrière</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="voyage" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Le voyage fondateur</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0;color:#22303A">La goélette Mariner, mai 1857</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:3rem;align-items:start;padding:clamp(1.5rem,4vw,3rem);background:linear-gradient(180deg,#FAF6EB 0%,#EAE3D3 100%);border:1px solid rgba(34,48,58,0.14);border-radius:10px">
+        <div style="max-width:54ch">
+          <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60,'SOFT' 30;font-style:italic;font-weight:500;font-size:2rem;margin:0 0 1rem;color:#8C4A2E">Havre-aux-Maisons → Pointe-aux-Esquimaux</h3>
+          <p style="font-size:1.1rem;margin:0 0 1rem;text-wrap:pretty">Le 20 mai 1857, la goélette <em>Mariner</em> quitte Havre-aux-Maisons aux Îles-de-la-Madeleine avec à son bord <strong>Pélagie Cormier</strong>, son mari <strong>Firmin Boudreau</strong>, son frère <strong>Louis-Hyppolite Cormier</strong> et quelques autres familles madeliniennes. La pêche est mauvaise aux Îles, les terres saturées ; ils cherchent un nouveau lieu.</p>
+          <p style="font-size:1.1rem;margin:0 0 1rem;text-wrap:pretty">Refusés à Mingan par le seigneur, ils continuent leur route et débarquent à <strong>Pointe-aux-Esquimaux</strong> — un banc de sable désert. C'est là qu'ils fondent le village qui deviendra Havre-Saint-Pierre.</p>
+          <p style="font-size:1.1rem;margin:0;font-style:italic;color:#5A6771;text-wrap:pretty">Notre lignée directe passe par le frère de Pélagie, Jean « Maît' Jean » Cormier, qui les suit peu après. Toute la famille Cormier de Havre-Saint-Pierre descend de ces quelques passagers de 1857.</p>
+        </div>
+        <figure style="margin:0;padding:1rem">
+          <svg viewBox="0 0 320 240" style="width:100%;height:auto;display:block;color:#22303A" role="img" aria-label="Route de la goélette Mariner depuis Havre-aux-Maisons vers Pointe-aux-Esquimaux via un arrêt refusé à Mingan">
+            <path d="M20,180 Q60,160 90,170 T160,150 Q200,145 240,130 L300,120" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.3"></path>
+            <path d="M40,220 Q80,215 120,210 T220,200 Q260,195 300,190" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.3"></path>
+            <ellipse cx="55" cy="200" rx="9" ry="4" fill="currentColor" opacity="0.15"></ellipse>
+            <ellipse cx="70" cy="205" rx="6" ry="3" fill="currentColor" opacity="0.15"></ellipse>
+            <ellipse cx="82" cy="197" rx="5" ry="3" fill="currentColor" opacity="0.15"></ellipse>
+            <path d="M65,200 Q120,155 175,140 Q210,132 245,120" fill="none" stroke="#8C4A2E" stroke-width="1.6" stroke-dasharray="3 3"></path>
+            <path d="M175,140 Q168,148 165,158" fill="none" stroke="#8A929A" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"></path>
+            <circle cx="65" cy="200" r="4" fill="#8C4A2E"></circle>
+            <circle cx="175" cy="140" r="3" fill="#8A929A"></circle>
+            <circle cx="245" cy="120" r="5" fill="#8C4A2E"></circle>
+            <text x="65" y="222" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.75">Havre-aux-Maisons</text>
+            <text x="175" y="130" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.55">Mingan · refusé</text>
+            <text x="245" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.75">Pointe-aux-Esquimaux</text>
+            <g transform="translate(120,175) rotate(-15)">
+              <path d="M-8,3 L8,3 L6,-1 L-6,-1 Z" fill="#8C4A2E"></path>
+              <line x1="0" y1="-1" x2="0" y2="-10" stroke="#8C4A2E" stroke-width="0.8"></line>
+              <path d="M0,-9 L5,-4 L0,-4 Z" fill="#8C4A2E" opacity="0.7"></path>
+            </g>
+            <text x="160" y="24" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#8C4A2E">20 mai 1857</text>
+          </svg>
+          <figcaption style="margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:#5A6771;text-transform:uppercase;letter-spacing:0.12em;text-align:center">Golfe du Saint-Laurent · route de la Mariner</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="carte" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Les migrations</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Quatre siècles de traversées</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Chaque flèche est un départ qui a changé la suite. Touchez un lieu, sur la carte ou dans la liste, pour lire ce qui s'y est passé.</p>
+      </div>
+      <iframe src="carte-atlantique.html" title="Carte des migrations familiales dans l'Atlantique Nord" style="width:100%;height:{{ mapHeight }};border:0;display:block;background:transparent"></iframe>
+    </section>
+
+    <section id="recits" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Récits &amp; anecdotes</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Ce qui se raconte encore</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Fragments de mémoire familiale — surnoms qui persistent, tragédies discrètes, petits mystères qui traversent les générations.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem">
+        <sc-for list="{{ recits }}" as="r" hint-placeholder-count="3">
+          <div data-reveal="1" style="padding:1.9rem 1.6rem;border-left:4px solid #8C4A2E;background:#FAF6EB;border-radius:0 8px 8px 0">
+            <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30,'SOFT' 30;font-style:italic;font-weight:500;font-size:1.3rem;color:#8C4A2E;margin:0 0 0.8rem;line-height:1.2">{{ r.title }}</h3>
+            <p style="color:#5A6771;font-size:1.02rem;line-height:1.6;margin:0;text-wrap:pretty">{{ r.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="lieux" style="padding:4.5rem 0 3rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Les lieux d'origine</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">Neuf endroits qui portent nos ancêtres</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Chaque famille naît quelque part. Voici les villages, ports et îles où nos aïeux ont vécu — chacun est une couche géologique de notre nom.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.25rem">
+        <sc-for list="{{ places }}" as="p" hint-placeholder-count="9">
+          <div style="padding:1.4rem;border:1px solid rgba(34,48,58,0.14);background:#FAF6EB;border-radius:8px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#8C4A2E;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:0.45rem">{{ p.era }}</div>
+            <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 30;font-weight:500;font-size:1.2rem;line-height:1.15;margin-bottom:0.35rem;color:#22303A">{{ p.name }}</div>
+            <div style="font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic;color:#5A6771;font-size:0.95rem;margin-bottom:0.6rem;line-height:1.3">{{ p.region }}</div>
+            <p style="font-size:0.98rem;color:#5A6771;line-height:1.5;margin:0;text-wrap:pretty">{{ p.note }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="sources" style="padding:4.5rem 0 2rem">
+      <div style="max-width:60ch;margin-bottom:2.5rem">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:#8C4A2E;display:block;margin-bottom:0.9rem">Sources et méthode</span>
+        <h2 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.02em;margin:0 0 0.7rem;color:#22303A">D'où viennent ces informations</h2>
+        <p style="font-size:1.15rem;color:#5A6771;margin:0">Ce site n'invente rien. Chaque date, chaque nom, chaque parenté vient d'une source identifiable — parfois d'un registre paroissial du XVII<sup>e</sup> siècle, parfois de la mémoire familiale contemporaine. Les hypothèses sont marquées comme telles.</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ sources }}" as="s" hint-placeholder-count="4">
+          <div style="display:flex;flex-wrap:wrap;gap:0 2rem;border-top:1px solid rgba(34,48,58,0.07)">
+            <div style="flex:0 1 200px;padding:1.6rem 0 0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.76rem;text-transform:uppercase;letter-spacing:0.14em;color:#8C4A2E">{{ s.cat }}</div>
+            <ul style="flex:1 1 340px;padding:1.6rem 0;margin:0;list-style:none;display:flex;flex-direction:column;gap:0.8rem">
+              <sc-for list="{{ s.items }}" as="i" hint-placeholder-count="4">
+                <li style="color:#5A6771;font-size:1.02rem;padding-left:1.2rem;position:relative;text-wrap:pretty">
+                  <span style="position:absolute;left:0;color:#8A929A">—</span>
+                  <sc-for list="{{ i.parts }}" as="p" hint-placeholder-count="2">
+                    <sc-if value="{{ p.em }}" hint-placeholder-val="{{ false }}"><em style="color:#22303A;font-family:Fraunces,serif;font-variation-settings:'opsz' 20">{{ p.text }}</em></sc-if>
+                    <sc-if value="{{ p.plain }}" hint-placeholder-val="{{ true }}"><span>{{ p.text }}</span></sc-if>
+                  </sc-for>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <footer style="margin-top:4rem;padding:3rem 0 2rem;border-top:1px solid rgba(34,48,58,0.14);text-align:center;color:#8A929A;font-family:'JetBrains Mono',monospace;font-size:0.76rem;text-transform:uppercase;letter-spacing:0.15em;line-height:2.1">
+      <div style="color:#8C4A2E;margin-bottom:1.5rem">
+        <svg width="60" height="20" viewBox="0 0 60 20" fill="none" stroke="currentColor" stroke-width="0.8" style="display:inline-block">
+          <path d="M2 10 Q 15 4, 30 10 T 58 10"></path>
+          <circle cx="30" cy="10" r="1.5" fill="currentColor"></circle>
+        </svg>
+      </div>
+      <div>Construit avec soin en août 2026<br>Pour la famille d'Aline Jomphe et Ludovic Cormier</div>
+    </footer>
+  </main>
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" style="position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:2rem">
+      <div onClick="{{ closeModal }}" style="position:absolute;inset:0;background:rgba(34,48,58,0.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);cursor:pointer"></div>
+      <div style="position:relative;background:#F4EFE4;border:1px solid #8C4A2E;border-radius:10px;padding:2.5rem;max-width:600px;width:100%;max-height:calc(100vh - 4rem);overflow-y:auto;box-shadow:0 8px 40px rgba(34,48,58,0.25)">
+        <button onClick="{{ closeModal }}" aria-label="Fermer" style="position:absolute;top:0.9rem;right:1rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(34,48,58,0.2);color:#5A6771;font-size:1.5rem;cursor:pointer">×</button>
+        <h3 style="font-family:Fraunces,serif;font-variation-settings:'opsz' 60,'SOFT' 30;font-style:italic;font-weight:500;font-size:2rem;line-height:1.1;color:#8C4A2E;margin:0 0 1.4rem;padding:0 2.5rem 1.2rem 0;border-bottom:1px solid rgba(34,48,58,0.1)">{{ modalName }}</h3>
+        <dl style="display:grid;grid-template-columns:140px 1fr;gap:0.6rem 1.2rem;margin:0 0 1.5rem">
+          <sc-for list="{{ modalRows }}" as="r" hint-placeholder-count="4">
+            <div style="display:contents">
+              <dt style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#5A6771;text-transform:uppercase;letter-spacing:0.12em;padding-top:0.2rem">{{ r.label }}</dt>
+              <dd style="margin:0;color:#22303A;font-size:1.05rem;line-height:1.5">{{ r.value }}</dd>
+            </div>
+          </sc-for>
+        </dl>
+        <sc-if value="{{ modalHasNote }}" hint-placeholder-val="{{ false }}">
+          <p style="color:#5A6771;font-size:1.02rem;line-height:1.6;padding-top:1.1rem;border-top:1px dashed rgba(34,48,58,0.2);margin:0 0 1.25rem;font-family:Fraunces,serif;font-variation-settings:'opsz' 20;font-style:italic">{{ modalNote }}</p>
+        </sc-if>
+        <button onClick="{{ modalFocus }}" style="font-family:'JetBrains Mono',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.7rem 1.2rem;min-height:44px;border:1px solid #8C4A2E;border-radius:999px;color:#8C4A2E;cursor:pointer">Voir dans l'arbre</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { ready: false, q: "", view: "all", open: {}, focus: "aline-jomphe", scale: 1, modal: null, mapHeight: 1100 };
+
+  componentDidMount() {
+    this.shown = new Set();
+    this.onMsg = (e) => {
+      if (e.data && e.data.type === "carte-height" && e.data.height > 200) {
+        this.setState({ mapHeight: e.data.height });
+      }
+    };
+    window.addEventListener("message", this.onMsg);
+    this.pingMap = () => {
+      const f = document.querySelector('iframe[src="carte-atlantique.html"]');
+      if (f && f.contentWindow) f.contentWindow.postMessage({ type: "carte-ping" }, "*");
+    };
+    [200, 800, 2000].forEach((t) => setTimeout(this.pingMap, t));
+    import("./family-data.js").then((m) => {
+      this.D = m;
+      this.graph = this.buildGraph(m);
+      this.peopleIndex = this.buildPeopleIndex(m);
+      this.setState({ ready: true });
+    });
+  }
+
+  componentDidUpdate() { this.setupReveal(); }
+
+  setupReveal() {
+    const nodes = document.querySelectorAll("[data-reveal]");
+    if (!nodes.length) return;
+    if (!this.io) {
+      this.io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.style.opacity = "1";
+            e.target.style.transform = "none";
+            this.io.unobserve(e.target);
+          }
+        }
+      }, { rootMargin: "0px 0px -8% 0px" });
+    }
+    nodes.forEach((n) => {
+      if (n.dataset.revealed) return;
+      n.dataset.revealed = "1";
+      const r = n.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.92) return;
+      n.style.opacity = "0";
+      n.style.transform = "translateY(18px)";
+      n.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+      this.io.observe(n);
+    });
+    if (!this.scrollBound) {
+      this.scrollBound = true;
+      this.onScroll = () => {
+        const bar = document.querySelector("[data-timeline-progress]");
+        if (!bar || !bar.parentElement) return;
+        const box = bar.parentElement.getBoundingClientRect();
+        const seen = window.innerHeight * 0.6 - box.top;
+        const pct = Math.max(0, Math.min(1, seen / box.height));
+        bar.style.height = (pct * box.height) + "px";
+      };
+      window.addEventListener("scroll", this.onScroll, { passive: true });
+      this.onScroll();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.onMsg) window.removeEventListener("message", this.onMsg);
+    if (this.onScroll) window.removeEventListener("scroll", this.onScroll);
+    if (this.io) this.io.disconnect();
+  }
+
+  slug(s) {
+    return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+
+  buildPeopleIndex(D) {
+    const idx = {};
+    for (const k of Object.keys(D.PEOPLE)) {
+      idx[k] = k;
+      idx[this.slug(D.PEOPLE[k].name)] = k;
+    }
+    return idx;
+  }
+
+  buildGraph(D) {
+    const N = {};
+    const add = (name, dates, forceId) => {
+      if (!name) return null;
+      const id = forceId || this.slug(name);
+      if (!N[id]) N[id] = { id, name: String(name).trim(), dates: dates || "", parents: [], children: [], spouse: null, note: "" };
+      else if (dates && !N[id].dates) N[id].dates = dates;
+      return N[id];
+    };
+    const marry = (a, b) => { if (a && b) { a.spouse = b.id; b.spouse = a.id; } };
+    const link = (p, c) => {
+      if (!p || !c || p.id === c.id) return;
+      if (!c.parents.includes(p.id)) c.parents.push(p.id);
+      if (!p.children.includes(c.id)) p.children.push(c.id);
+    };
+    const two = (d) => { const p = String(d || "").split("·"); return [(p[0] || "").trim(), (p[1] || "").trim()]; };
+
+    for (const L of D.LINEAGES) {
+      let prev = null, prevSp = null;
+      for (const g of L.generations) {
+        let nm = g.name, sp = g.coupleSuffix || null;
+        if (nm.indexOf("×") > -1) {
+          const parts = nm.split("×");
+          nm = parts[0].trim();
+          if (!sp) sp = parts[1].trim();
+        }
+        nm = nm.replace(/\s*\?\s*$/, "");
+        if (sp) sp = sp.replace(/\s*\?\s*$/, "");
+        const [d1, d2] = two(g.dates);
+        const main = add(nm, d1);
+        const spouse = sp ? add(sp, d2) : null;
+        marry(main, spouse);
+        if (g.note && !main.note) main.note = g.note;
+        if (prev) { link(prev, main); if (prevSp) link(prevSp, main); }
+        prev = main; prevSp = spouse;
+      }
+    }
+
+    const aline = add("Aline Jomphe", "n. 2 mars 1934");
+    const lud = add("Ludovic Cormier", "12 janvier 1932 – 23 juin 2006");
+    marry(aline, lud);
+
+    for (const b of D.BRANCHES) {
+      const [d1, d2] = two(b.cardDates);
+      const main = add(b.name, d1.replace(/^n[ée]{1,2}\s+le\s+/i, ""));
+      link(aline, main); link(lud, main);
+      let sp = null;
+      if (b.cardLine.indexOf(" et ") > -1) sp = add(b.cardLine.split(" et ").slice(1).join(" et ").trim(), d2);
+      marry(main, sp);
+      for (const c of b.children) {
+        const [c1, c2] = two(c.dates);
+        const forced = (c.name === "Ludovic Cormier") ? "ludovic-cormier-2002" : null;
+        const ch = add(c.name, c1, forced);
+        if (c.deceased) ch.deceased = true;
+        if (c.note) ch.note = c.note;
+        if (c.person) ch.person = c.person;
+        link(main, ch); if (sp) link(sp, ch);
+        const partner = c.partner ? add(c.partner, c2) : null;
+        marry(ch, partner);
+        if (c.kids) {
+          const rx = /([A-ZÉÈÀÂÊÎÔÛÇ][A-Za-zÀ-ÿ'’\-]+(?:\s[A-ZÉÈÀÂÊÎÔÛÇ][A-Za-zÀ-ÿ'’\-]+)*)\s*\((\d{1,2}\s+[a-zéèûêùàâîïçöô]+\.?\s*\d{4})\)/g;
+          let m;
+          while ((m = rx.exec(c.kids)) !== null) {
+            const gk = add(m[1].trim(), "n. " + m[2]);
+            link(ch, gk); if (partner) link(partner, gk);
+          }
+        }
+      }
+    }
+    return N;
+  }
+
+  node(id) { return (this.graph && this.graph[id]) || null; }
+
+  personCard(id) {
+    const n = this.node(id);
+    const key = (n && n.person) || (this.peopleIndex && this.peopleIndex[id]);
+    const p = key && this.D ? this.D.PEOPLE[key] : null;
+    const rows = [];
+    const push = (label, value) => { if (value) rows.push({ label, value }); };
+    if (p) {
+      push("Naissance", p.birth);
+      push("Décès", p.death);
+      push("Lieu", p.place);
+      push("Rôle", p.role);
+      push("Conjoint(e)", p.spouse);
+      push("Mariage", p.marriage);
+      push("Parents", p.parents);
+      return { name: p.name, rows, note: p.note || "", id };
+    }
+    if (!n) return null;
+    push("Dates", n.dates);
+    const sp = n.spouse ? this.node(n.spouse) : null;
+    push("Conjoint(e)", sp ? sp.name : "");
+    const par = n.parents.map((x) => { const q = this.node(x); return q ? q.name : ""; }).filter(Boolean);
+    push("Parents", par.join(" et "));
+    if (n.children.length) push("Enfants", n.children.map((x) => { const q = this.node(x); return q ? q.name : ""; }).filter(Boolean).join(", "));
+    return { name: n.name, rows, note: n.note || "", id };
+  }
+
+  brief(id) {
+    const n = this.node(id);
+    if (!n) return null;
+    return { id, name: n.name, dates: n.dates, focus: () => this.setState({ focus: id, modal: null }) };
+  }
+
+  today() { return new Date(); }
+
+  birthdays() {
+    if (!this.D) return null;
+    const MK = { janv: 1, janvier: 1, jan: 1, "fév": 2, "févr": 2, "février": 2, fev: 2, fevrier: 2, mars: 3, avr: 4, avril: 4, mai: 5, juin: 6, juil: 7, juillet: 7, "août": 8, aout: 8, sept: 9, septembre: 9, oct: 10, octobre: 10, nov: 11, novembre: 11, "déc": 12, "décembre": 12, dec: 12 };
+    const parse = (s) => {
+      const m = String(s || "").match(/(\d{1,2})\s+([a-zéèûêùàâîïçöô]+)\.?\s*(\d{4})/i);
+      if (!m) return null;
+      const mo = MK[m[2].toLowerCase()];
+      if (!mo || !m[3]) return null;
+      return { day: parseInt(m[1], 10), month: mo, year: parseInt(m[3], 10) };
+    };
+    const list = [];
+    for (const id of Object.keys(this.graph)) {
+      const n = this.graph[id];
+      const d = parse(n.dates);
+      const gone = n.deceased || /–|†|mort/i.test(n.dates.replace(/^n\.\s*/, ""));
+      if (d && d.year > 1900 && !gone) list.push({ name: n.name, ...d });
+    }
+    const t = this.today();
+    const day = t.getDate(), month = t.getMonth() + 1, yr = t.getFullYear();
+    const MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+    const same = list.filter((p) => p.day === day && p.month === month);
+    if (same.length) {
+      return "Aujourd'hui, dans la famille : " + same.map((p) => p.name + " · " + (yr - p.year) + " ans").join(" — ");
+    }
+    if (!list.length) return null;
+    let best = null, bestD = 1e9;
+    for (const p of list) {
+      let d = new Date(yr, p.month - 1, p.day);
+      if (d < t) d = new Date(yr + 1, p.month - 1, p.day);
+      const days = Math.ceil((d - t) / 86400000);
+      if (days < bestD) { bestD = days; best = p; }
+    }
+    if (!best) return null;
+    const nextYear = (new Date(yr, best.month - 1, best.day) < t) ? yr + 1 : yr;
+    const when = bestD === 1 ? "demain" : "dans " + bestD + " jours";
+    return "Prochain anniversaire " + when + " : " + best.name + ", " + (nextYear - best.year) + " ans, le " + best.day + " " + MONTHS[best.month - 1] + ".";
+  }
+
+  arcPath(a) {
+    if (a.via) return "M " + a.from[0] + "," + a.from[1] + " Q " + a.via[0] + "," + a.via[1] + " " + a.to[0] + "," + a.to[1];
+    const mx = (a.from[0] + a.to[0]) / 2, my = (a.from[1] + a.to[1]) / 2 + (a.curve || 0);
+    return "M " + a.from[0] + "," + a.from[1] + " Q " + mx + "," + my + " " + a.to[0] + "," + a.to[1];
+  }
+
+  splitEm(html) {
+    const out = [];
+    const rx = /<em>(.*?)<\/em>/g;
+    let last = 0, m;
+    const clean = (s) => s.replace(/&amp;/g, "&");
+    while ((m = rx.exec(html)) !== null) {
+      if (m.index > last) out.push({ text: clean(html.slice(last, m.index)), em: false, plain: true });
+      out.push({ text: clean(m[1]), em: true, plain: false });
+      last = m.index + m[0].length;
+    }
+    if (last < html.length) out.push({ text: clean(html.slice(last)), em: false, plain: true });
+    return out;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const D = this.D;
+    const pill = "#EFE0D2";
+    const base = {
+      q: s.q,
+      onSearch: (e) => this.setState({ q: e.target.value }),
+      viewAll: () => this.setState({ view: "all" }),
+      viewGrand: () => this.setState({ view: "grand" }),
+      viewGreat: () => this.setState({ view: "great" }),
+      viewAllBg: s.view === "all" ? pill : "transparent",
+      viewGrandBg: s.view === "grand" ? pill : "transparent",
+      viewGreatBg: s.view === "great" ? pill : "transparent",
+      scale: s.scale,
+      mapHeight: s.mapHeight + "px",
+      zoomIn: () => this.setState({ scale: Math.min(1.6, +(s.scale + 0.15).toFixed(2)) }),
+      zoomOut: () => this.setState({ scale: Math.max(0.6, +(s.scale - 0.15).toFixed(2)) }),
+      closeModal: () => this.setState({ modal: null }),
+      focusAline: () => this.setState({ focus: "aline-jomphe" }),
+      focusLudovic: () => this.setState({ focus: "ludovic-cormier" }),
+      focusRobert: () => this.setState({ focus: "robert-cormier" }),
+      focusHans: () => this.setState({ focus: "hans-schumpp" }),
+    };
+    if (!D) return base;
+
+    const q = s.q.trim().toLowerCase();
+    const branches = [];
+    for (const b of D.BRANCHES) {
+      const hay = [b.name, b.cardLine, b.familyNote || ""].concat(b.children.map((c) => c.name + " " + (c.partner || "") + " " + (c.kids || ""))).join(" ").toLowerCase();
+      const match = q ? hay.indexOf(q) > -1 : false;
+      if (q && !match) continue;
+      const open = q ? true : (s.view !== "all" ? true : !!s.open[b.id]);
+      const kids = b.children.filter((c) => s.view !== "great" || c.kids).map((c) => ({
+        name: c.name,
+        partnerLabel: c.partner ? " et " + c.partner : "",
+        dates: c.dates || "",
+        deceased: !!c.deceased,
+        showKids: !!(c.kids && s.view !== "grand"),
+        kidsLabel: c.kids || "",
+        showOwnNote: !!c.note,
+        note: c.note || "",
+      }));
+      branches.push({
+        numLabel: "0" + b.num,
+        cardLine: b.cardLine,
+        cardDates: b.cardDates,
+        metaLabel: b.countK + (b.countK > 1 ? " enfants · " : " enfant · ") + b.countAK + (b.countAK > 1 ? " arrière-petits-enfants" : " arrière-petit-enfant"),
+        borderColor: open ? "#8C4A2E" : "rgba(34,48,58,0.14)",
+        toggleLabel: open ? "Fermer −" : "Ouvrir +",
+        open,
+        showNote: !!b.familyNote && s.view === "all",
+        familyNote: b.familyNote || "",
+        kids,
+        toggle: () => this.setState((st) => ({ open: Object.assign({}, st.open, { [b.id]: !st.open[b.id] }) })),
+      });
+    }
+
+    const focus = this.node(s.focus) || this.node("aline-jomphe");
+    const parents = focus ? focus.parents.map((id) => this.brief(id)).filter(Boolean) : [];
+    const gpIds = [];
+    if (focus) for (const pid of focus.parents) {
+      const p = this.node(pid);
+      if (p) for (const g of p.parents) if (gpIds.indexOf(g) < 0) gpIds.push(g);
+    }
+    const grandparents = gpIds.map((id) => this.brief(id)).filter(Boolean);
+    const children = focus ? focus.children.map((id) => this.brief(id)).filter(Boolean) : [];
+    const spouse = focus && focus.spouse ? this.node(focus.spouse) : null;
+    const modalCard = s.modal ? this.personCard(s.modal) : null;
+    const bd = this.birthdays();
+
+    return Object.assign(base, {
+      timeline: D.TIMELINE,
+      contexts: D.CONTEXTS,
+      branches,
+      searching: !!q,
+      searchLabel: q ? branches.length + (branches.length === 1 ? " branche correspond" : " branches correspondent") : "",
+      portraits: D.PORTRAITS.map((p) => Object.assign({}, p, { open: () => this.setState({ modal: p.person }) })),
+      stats: D.STATS,
+      recits: D.RECITS,
+      places: D.PLACES,
+      fratries: D.FRATRIES.map((f) => ({
+        title: f.title, parents: f.parents, count: f.count,
+        hasTodo: !!f.todo, todo: f.todo || "",
+        items: f.items.map((i) => ({
+          name: i.name, detail: i.detail,
+          border: i.highlight ? "#8C4A2E" : "rgba(34,48,58,0.14)",
+          bg: i.highlight ? "#F6E7DC" : "transparent",
+        })),
+      })),
+      lineages: D.LINEAGES.map((L) => ({
+        name: L.name,
+        pathLabel: L.path.join("  →  "),
+        gens: L.generations.map((g) => ({
+          label: g.label,
+          labelColor: g.speculative ? "#8A929A" : "#8C4A2E",
+          nameColor: g.speculative ? "#5A6771" : "#22303A",
+          name: g.name,
+          coupleLabel: g.coupleSuffix ? " × " + g.coupleSuffix : "",
+          hasDates: !!g.dates, dates: g.dates || "",
+          hasNote: !!g.note, note: g.note || "",
+          speculative: !!g.speculative,
+        })),
+      })),
+      allied: D.ALLIED.map((a) => ({
+        name: a.name, gen: a.gen,
+        size: a.weight === 3 ? "1.15rem" : (a.weight === 2 ? "1.05rem" : "0.95rem"),
+        color: a.weight === 3 ? "#275462" : "#22303A",
+        border: a.weight === 3 ? "rgba(58,108,122,0.45)" : "rgba(34,48,58,0.14)",
+      })),
+      sources: D.SOURCES.map((g) => ({ cat: g.cat, items: g.items.map((i) => ({ parts: this.splitEm(i) })) })),
+      hasBirthday: !!bd, birthdayText: bd || "",
+      focusName: focus ? focus.name : "",
+      focusDates: focus ? focus.dates : "",
+      openFocus: () => this.setState({ modal: s.focus }),
+      hasParents: parents.length > 0, parents,
+      hasGrandparents: grandparents.length > 0, grandparents,
+      hasChildren: children.length > 0, children,
+      childrenLabel: children.length > 1 ? "Enfants" : "Enfant",
+      isLeaf: children.length === 0,
+      hasSpouse: !!spouse,
+      spouseName: spouse ? spouse.name : "",
+      spouseDates: spouse ? spouse.dates : "",
+      focusSpouse: () => { if (spouse) this.setState({ focus: spouse.id }); },
+      modalOpen: !!modalCard,
+      modalName: modalCard ? modalCard.name : "",
+      modalRows: modalCard ? modalCard.rows : [],
+      modalHasNote: !!(modalCard && modalCard.note),
+      modalNote: modalCard ? modalCard.note : "",
+      modalFocus: () => { if (modalCard) this.setState({ focus: modalCard.id, modal: null }); },
+    });
+  }
+}
+</script>
+</body>
+</html>

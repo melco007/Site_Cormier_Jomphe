@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carte des migrations — Cormier · Jomphe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Crimson+Pro:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F4EFE4; color: #22303A; font-family: "Crimson Pro", Georgia, serif; font-size: 20px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { display: flex; flex-direction: column; gap: 1.5rem; padding: clamp(1.25rem, 3vw, 2rem); background: linear-gradient(180deg, #FAF6EB 0%, #EAE3D3 100%); border: 1px solid rgba(34,48,58,0.14); border-radius: 10px; }
+  .maps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; align-items: start; }
+  .panel { min-width: 0; }
+  .panel h3 { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: #8C4A2E; font-weight: 500; margin: 0 0 0.5rem; }
+  .gulf { grid-column: span 2; }
+  @media (max-width: 720px) { .gulf { grid-column: span 1; } }
+  svg.map { width: 100%; display: block; background: #E9E2D2; border: 1px solid rgba(34,48,58,0.12); border-radius: 8px; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: #8C4A2E; }
+  .lieux { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.3rem 1.5rem; }
+  .lieux button { width: 100%; text-align: left; font: inherit; color: inherit; background: transparent; border: 0; border-radius: 6px; padding: 0.5rem 0.65rem; min-height: 44px; cursor: pointer; display: flex; align-items: baseline; gap: 0.6rem; }
+  .lieux button:hover { background: rgba(140,74,46,0.08); }
+  .lieux button[aria-pressed="true"] { background: #F1E1D4; box-shadow: inset 0 0 0 1px rgba(140,74,46,0.45); }
+  .lieux .n { font-family: "JetBrains Mono", monospace; font-size: 0.8rem; color: #8C4A2E; min-width: 1.4em; }
+  .lieux .nm { font-family: Fraunces, serif; font-variation-settings: "opsz" 30; font-size: 1.05rem; }
+  .lieux .er { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; color: #8A929A; margin-left: auto; white-space: nowrap; }
+  .detail { background: #FAF6EB; border: 1px solid rgba(34,48,58,0.14); border-radius: 8px; padding: 1.6rem; }
+  .detail h2 { font-family: Fraunces, serif; font-variation-settings: "opsz" 60; font-style: italic; font-weight: 500; font-size: 1.7rem; margin: 0.35rem 0 0.7rem; }
+  .detail p { margin: 0; color: #5A6771; font-size: 1.08rem; max-width: 72ch; text-wrap: pretty; }
+  .routes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.4rem 2rem; padding-top: 0.9rem; border-top: 1px solid rgba(34,48,58,0.12); font-size: 1.02rem; color: #5A6771; }
+  .routes b { font-family: "JetBrains Mono", monospace; font-size: 0.85rem; color: #8C4A2E; margin-right: 0.6rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="maps">
+    <div class="panel gulf">
+      <h3>Golfe du Saint-Laurent — 1644 à aujourd'hui</h3>
+      <svg class="map" id="map-gulf" role="img" aria-label="Carte du golfe du Saint-Laurent situant Québec, Beaubassin, l'Île Saint-Jean, les Îles-de-la-Madeleine, la Gaspésie, Anticosti et Havre-Saint-Pierre"></svg>
+    </div>
+    <div class="panel">
+      <h3>Europe — 1474 à 1778</h3>
+      <svg class="map" id="map-eu" role="img" aria-label="Carte d'Europe de l'Ouest situant Enkirch, Dieppe, la Brie et La Rochelle"></svg>
+    </div>
+  </div>
+
+  <div>
+    <div class="eyebrow" style="margin-bottom:0.6rem">Les lieux — touchez pour situer</div>
+    <ul class="lieux" id="lieux"></ul>
+  </div>
+
+  <div class="detail" id="detail"></div>
+
+  <div class="routes">
+    <span><b>1644</b>La Rochelle → Beaubassin · Robert Cormier</span>
+    <span><b>1755</b>Beaubassin → Île Saint-Jean · Grand Dérangement</span>
+    <span><b>1770s</b>Île Saint-Jean → Havre-Aubert</span>
+    <span><b>1778</b>Enkirch → Québec · Christian Adolph</span>
+    <span><b>1807</b>Québec → Havre-Aubert · Laurent Jomphe</span>
+    <span><b>1857</b>Havre-aux-Maisons → Havre-Saint-Pierre · la Mariner</span>
+    <span><b>1900</b>Grande-Rivière → Anticosti · Bernard &amp; Hénédine</span>
+    <span><b>1924</b>Anticosti → Havre-Saint-Pierre · Claude &amp; Bernadette</span>
+  </div>
+</div>
+
+<script>
+// side: "eu" = encart européen, "gulf" = golfe. mapAs : plusieurs lieux partagent un point.
+const PLACES = [
+  { id:"enkirch", n:1, side:"eu", name:"Enkirch", era:"≈1474 – 1753", lon:7.122, lat:49.983,
+    detail:"Village viticole de la vallée de la Moselle. Le nom Schomp y apparaît après 1474 ; sept générations de tailleurs et d'échevins y vivent jusqu'au départ de Christian Adolph en 1778." },
+  { id:"dieppe", n:2, side:"eu", name:"Dieppe", era:"≈1585 ?", lon:1.078, lat:49.923,
+    detail:"Lieu de naissance présumé d'Abraham Cormier, souvent cité comme père de Robert — parenté non prouvée." },
+  { id:"brie", n:3, side:"eu", name:"Brie", era:"≈1628", lon:2.712, lat:48.883,
+    detail:"Pierre Lejeune dit « Briard », probablement de Thorigny-sur-Marne, arrive en Acadie vers 1651. Le lien avec nos Lejeune d'Anticosti reste à établir." },
+  { id:"la-rochelle", n:4, side:"eu", name:"La Rochelle", era:"≈1610 – 1644", lon:-1.151, lat:46.160,
+    detail:"Port protestant de l'Aunis. Robert Cormier, maître charpentier de navire, y signe le 8 janvier 1644 son engagement de trois ans pour le Fort Saint-Pierre du Cap-Breton." },
+  { id:"quebec", n:5, side:"gulf", name:"Québec", era:"1778 – 1816", lon:-71.208, lat:46.813,
+    detail:"Christian Adolph Schumpf y débarque en 1778 comme soldat des forces britanniques. Il épouse Marie-Monique Samson en 1791 et meurt en 1816 ; « Schumpf » devient « Jomphe »." },
+  { id:"beaubassin", n:6, side:"gulf", name:"Beaubassin", era:"1644 – 1755", lon:-64.271, lat:45.853,
+    detail:"Village acadien fondé vers 1672 où Thomas Cormier s'établit avec Marie-Madeleine Girouard. Incendié lors du Grand Dérangement en 1755." },
+  { id:"ile-saint-jean", n:7, side:"gulf", name:"Île Saint-Jean", era:"≈1720 – 1758", lon:-63.131, lat:46.238,
+    detail:"Aujourd'hui l'Île-du-Prince-Édouard. Refuge des vingt-deux familles acadiennes dont les Cormier, avant le départ vers les Îles-de-la-Madeleine." },
+  { id:"havre-aubert", n:8, side:"gulf", name:"Havre-Aubert", era:"1775 – 1857", lon:-61.833, lat:47.238, mapAs:"madeleine",
+    detail:"Îles-de-la-Madeleine. Jean Cormier s'y marie en 1775 ; Hyppolite-Paul Cormier et Anne Gaudet en 1794 — les ancêtres communs d'Aline et Ludovic." },
+  { id:"havre-aux-maisons", n:9, side:"gulf", name:"Havre-aux-Maisons", era:"XIXᵉ", lon:-61.795, lat:47.428, mapAs:"madeleine",
+    detail:"Village madelinien de la lignée Jomphe-Cormier au XIXᵉ siècle. La goélette Mariner en part le 20 mai 1857, à destination de la Côte-Nord." },
+  { id:"grande-riviere", n:10, side:"gulf", name:"Grande-Rivière", era:"1871 – 1900", lon:-64.621, lat:48.392,
+    detail:"Gaspésie. Mariage de Bernard Lejeune Sr et Éliza Béliveau en 1871, puis de Bernard Jr et Hénédine Beaudin en 1900." },
+  { id:"anticosti", n:11, side:"gulf", name:"Île d'Anticosti", era:"1860 – 1930", lon:-64.348, lat:49.816,
+    detail:"Bernard Lejeune Sr arrive vers 1860 et meurt à trente ans à Pointe-Ouest. Bernadette Lejeune y naît en 1902, à l'époque de la seigneurie Menier." },
+  { id:"havre-saint-pierre", n:12, side:"gulf", name:"Havre-Saint-Pierre", era:"1857 →", lon:-63.601, lat:50.238, main:true,
+    detail:"Fondé le 20 mai 1857 par les passagers de la goélette Mariner, dont Pélagie Cormier. C'est là que les quatre lignées se rejoignent : Aline et Ludovic y naissent, s'y marient et y élèvent huit enfants." },
+];
+
+// Points dessinés : les deux villages madeliniens n'en forment qu'un à cette échelle.
+const DOTS = [
+  { key:"quebec", side:"gulf", label:"5", name:"Québec", lon:-71.208, lat:46.813, ids:["quebec"] },
+  { key:"beaubassin", side:"gulf", label:"6", name:"Beaubassin", lon:-64.271, lat:45.853, ids:["beaubassin"] },
+  { key:"ile-saint-jean", side:"gulf", label:"7", name:"Île Saint-Jean", lon:-63.131, lat:46.238, ids:["ile-saint-jean"] },
+  { key:"madeleine", side:"gulf", label:"8·9", name:"Îles-de-la-Madeleine", lon:-61.814, lat:47.333, ids:["havre-aubert","havre-aux-maisons"] },
+  { key:"grande-riviere", side:"gulf", label:"10", name:"Grande-Rivière", lon:-64.621, lat:48.392, ids:["grande-riviere"] },
+  { key:"anticosti", side:"gulf", label:"11", name:"Île d'Anticosti", lon:-64.348, lat:49.816, ids:["anticosti"] },
+  { key:"havre-saint-pierre", side:"gulf", label:"12", name:"Havre-Saint-Pierre", lon:-63.601, lat:50.238, ids:["havre-saint-pierre"], main:true },
+  { key:"enkirch", side:"eu", label:"1", name:"Enkirch", lon:7.122, lat:49.983, ids:["enkirch"] },
+  { key:"dieppe", side:"eu", label:"2", name:"Dieppe", lon:1.078, lat:49.923, ids:["dieppe"] },
+  { key:"brie", side:"eu", label:"3", name:"Brie", lon:2.712, lat:48.883, ids:["brie"] },
+  { key:"la-rochelle", side:"eu", label:"4", name:"La Rochelle", lon:-1.151, lat:46.160, ids:["la-rochelle"] },
+];
+
+const ROUTES = [
+  { side:"gulf", a:"beaubassin", b:"ile-saint-jean", bend:0.3 },
+  { side:"gulf", a:"ile-saint-jean", b:"madeleine", bend:0.3 },
+  { side:"gulf", a:"quebec", b:"madeleine", bend:0.16 },
+  { side:"gulf", a:"madeleine", b:"havre-saint-pierre", bend:0.28 },
+  { side:"gulf", a:"grande-riviere", b:"anticosti", bend:-0.3 },
+  { side:"gulf", a:"anticosti", b:"havre-saint-pierre", bend:0.34 },
+];
+
+const byId = {}, byKey = {};
+PLACES.forEach(p => byId[p.id] = p);
+DOTS.forEach(d => byKey[d.key] = d);
+let selected = "havre-saint-pierre";
+let LAND = null;
+
+const activeKey = () => (byId[selected].mapAs || selected);
+
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").then(topo => {
+  LAND = topojson.feature(topo, topo.objects.countries);
+  drawAll();
+  window.addEventListener("resize", drawAll);
+});
+
+function drawAll() {
+  drawPanel("#map-gulf", "gulf", 0.60, 26);
+  drawPanel("#map-eu", "eu", 0.92, 22);
+}
+
+function drawPanel(sel, side, ratio, pad) {
+  if (!LAND) return;
+  const svg = d3.select(sel);
+  const host = svg.node().parentElement;
+  const W = host.clientWidth;
+  const H = Math.max(240, Math.round(W * ratio));
+  svg.attr("viewBox", `0 0 ${W} ${H}`).attr("height", H).selectAll("*").remove();
+
+  const dots = DOTS.filter(d => d.side === side);
+  const bounds = { type: "MultiPoint", coordinates: dots.map(d => [d.lon, d.lat]) };
+  const projection = d3.geoMercator().fitExtent([[pad + 24, pad + 18], [W - pad - 24, H - pad - 26]], bounds);
+  const path = d3.geoPath(projection);
+  const P = (d) => projection([d.lon, d.lat]);
+
+  const defs = svg.append("defs");
+  defs.append("marker").attr("id", "arr-" + side).attr("viewBox", "0 0 10 10")
+    .attr("refX", 8).attr("refY", 5).attr("markerWidth", 6).attr("markerHeight", 6)
+    .attr("orient", "auto-start-reverse")
+    .append("path").attr("d", "M0,0 L10,5 L0,10 Z").attr("fill", "#8C4A2E");
+
+  svg.append("g").selectAll("path").data(LAND.features).join("path")
+    .attr("d", path).attr("fill", "#F7F2E6").attr("stroke", "rgba(34,48,58,0.3)").attr("stroke-width", 0.9);
+  svg.append("path").datum(d3.geoGraticule().step([2, 2])())
+    .attr("d", path).attr("fill", "none").attr("stroke", "rgba(34,48,58,0.07)").attr("stroke-width", 0.6);
+
+  for (const r of ROUTES.filter(r => r.side === side)) {
+    const p0 = P(byKey[r.a]), p1 = P(byKey[r.b]);
+    const mx = (p0[0] + p1[0]) / 2, my = (p0[1] + p1[1]) / 2;
+    const dx = p1[0] - p0[0], dy = p1[1] - p0[1];
+    svg.append("path")
+      .attr("d", `M${p0[0]},${p0[1]} Q${mx - dy * r.bend},${my + dx * r.bend} ${p1[0]},${p1[1]}`)
+      .attr("fill", "none").attr("stroke", "#8C4A2E").attr("stroke-width", 1.5)
+      .attr("stroke-dasharray", "5 4").attr("marker-end", `url(#arr-${side})`).attr("opacity", 0.7);
+  }
+
+  const act = activeKey();
+  const dotsG = svg.append("g");
+  for (const d of dots) {
+    const [x, y] = P(d);
+    const g = dotsG.append("g").attr("cursor", "pointer").on("click", () => select(d.ids[0]));
+    g.append("circle").attr("cx", x).attr("cy", y).attr("r", 15).attr("fill", "transparent");
+    g.append("circle").attr("cx", x).attr("cy", y)
+      .attr("r", d.main ? 8 : 6)
+      .attr("fill", d.key === act ? "#8C4A2E" : (d.main ? "#C08262" : "#FAF6EB"))
+      .attr("stroke", d.key === act ? "#6E3720" : "#8C4A2E")
+      .attr("stroke-width", d.key === act ? 2.6 : 1.6);
+  }
+
+  // Le nom du lieu actif n'est pas peint sur le dessin : la liste numérotée
+  // et le panneau de détail sous la carte le donnent déjà en grand.
+
+  const labels = svg.append("g").attr("pointer-events", "none");
+  for (const d of dots) {
+    const [x, y] = P(d);
+    labels.append("text").attr("x", x).attr("y", y - (d.main ? 15 : 13)).attr("text-anchor", "middle")
+      .attr("font-family", "JetBrains Mono, monospace").attr("font-size", 14).attr("font-weight", 500)
+      .attr("fill", "#6E3720").attr("paint-order", "stroke").attr("stroke", "#F7F2E6")
+      .attr("stroke-width", 5).attr("stroke-linejoin", "round").text(d.label);
+  }
+}
+
+const lieuxEl = document.getElementById("lieux");
+for (const p of PLACES) {
+  const li = document.createElement("li");
+  const b = document.createElement("button");
+  b.type = "button";
+  b.dataset.id = p.id;
+  b.setAttribute("aria-pressed", String(p.id === selected));
+  b.innerHTML = `<span class="n">${p.n}</span><span class="nm">${p.name}</span><span class="er">${p.era}</span>`;
+  b.addEventListener("click", () => select(p.id));
+  li.appendChild(b);
+  lieuxEl.appendChild(li);
+}
+
+function paintDetail() {
+  const p = byId[selected];
+  document.getElementById("detail").innerHTML =
+    `<div class="eyebrow">${p.era}</div><h2>${p.name}</h2><p>${p.detail}</p>`;
+  lieuxEl.querySelectorAll("button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.id === selected)));
+}
+
+function select(id) {
+  selected = id;
+  paintDetail();
+  drawAll();
+  postHeight();
+}
+
+paintDetail();
+
+function postHeight() {
+  parent.postMessage({ type: "carte-height", height: Math.ceil(document.documentElement.scrollHeight) }, "*");
+}
+new ResizeObserver(postHeight).observe(document.body);
+window.addEventListener("load", postHeight);
+window.addEventListener("message", (e) => { if (e.data && e.data.type === "carte-ping") postHeight(); });
+[100, 400, 900, 1800, 3000].forEach(t => setTimeout(postHeight, t));
+</script>
+</body>
+</html>
